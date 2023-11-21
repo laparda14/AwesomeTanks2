@@ -22380,7 +22380,7 @@ function() {
             id: "player/shotgun",
             team: l.PLAYER,
             spawnCount: N[r.shotgunLevel],
-            rate: G[r.shotgunLevel],
+            rate: G[r.6],
             life: U[r.shotgunLevel],
             spawnDistance: 20,
             damage: W[r.shotgunLevel],
