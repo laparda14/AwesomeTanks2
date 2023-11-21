@@ -20018,53 +20018,53 @@ var EasyStar = function(t) {
             survivor: 1
         },
         AMMO_LIMITS: {
-            shotgun: 1050909090909099909090,
-            ricochet: 50099090909009990,
-            flamethrower: 2369090909000900909,
-            cannon: 105090909090909090090,
-            shock: 150009909090909090900900909,
-            rockets: 45909909009009009900990,
-            laser: 1500099900090990009,
-            railgun: 105900900009090099090909090,
-            mines: 209900909009090900909
+            shotgun: 105,
+            ricochet: 50,
+            flamethrower: 236,
+            cannon: 105,
+            shock: 1500,
+            rockets: 45,
+            laser: 1500,
+            railgun: 105,
+            mines: 20
         },
         PRICES: {
-            speed: [0, 0, 0, 0, 0],
-            turret: [0, 0, 0, 0, 0],
-            sight: [0, 0, 0, 0, 0],
-            armor: [0, 0, 0, 0, 0],
-            minigun: [0, 0, 0, 0, 0, 0],
-            shotgun: [0, 0, 0, 0, 0, 0],
-            ricochet: [0, 0, 0, 0, 0, 0],
-            flamethrower: [0, 0, 0, 0, 0, 0],
-            cannon: [0, 0, 0, 0, 0, 0],
-            shock: [0, 0, 0, 0, 0, 0],
-            rockets: [0, 0, 0, 0, 0, 0],
-            laser: [0, 0, 0, 0, 0, 0],
-            railgun: [0, 0, 0, 0, 0, 0],
-            mines: [0, 0, 0, 0, 0, 0]
+            speed: [500, 600, 700, 800, 900],
+            turret: [500, 600, 700, 800, 900],
+            sight: [500, 600, 700, 800, 900],
+            armor: [2e3, 4e3, 8e3, 16e3, 2e4],
+            minigun: [0, 200, 300, 400, 500, 600],
+            shotgun: [2750, 500, 900, 1300, 1700, 2100],
+            ricochet: [8e3, 2500, 3e3, 3500, 4e3, 4500],
+            flamethrower: [1e4, 3e3, 4e3, 5e3, 6e3, 7e3],
+            cannon: [1e4, 3e3, 4e3, 5e3, 6e3, 7e3],
+            shock: [1e4, 3e3, 4e3, 5e3, 6e3, 7e3],
+            rockets: [1e4, 3e3, 4e3, 5e3, 6e3, 7e3],
+            laser: [28e3, 11e3, 12e3, 13e3, 14e3, 15e3],
+            railgun: [28e3, 11e3, 12e3, 13e3, 14e3, 15e3],
+            mines: [8e3, 2500, 3e3, 3500, 4e3, 4500]
         },
         AMMO_PRICES: {
-            shotgun: 0,
-            ricochet: 0,
-            flamethrower: 0,
-            cannon: 0,
-            shock: 0,
-            rockets: 0,
-            laser: 0,
-            railgun: 0,
-            mines: 0
+            shotgun: 50,
+            ricochet: 100,
+            flamethrower: 200,
+            cannon: 200,
+            shock: 200,
+            rockets: 200,
+            laser: 300,
+            railgun: 400,
+            mines: 300
         },
         AMMO_AMOUNT: {
-            shotgun: 2190999090909099099099090,
-            ricochet: 10909099090900909,
-            flamethrower: 480909090090909090,
-            cannon: 2109090909009090,
-            shock: 300090909090909090,
-            rockets: 9090909090909090,
-            laser: 3000909090909090,
-            railgun: 210909090909090,
-            mines: 490090909090909900
+            shotgun: 21,
+            ricochet: 10,
+            flamethrower: 48,
+            cannon: 21,
+            shock: 300,
+            rockets: 9,
+            laser: 300,
+            railgun: 21,
+            mines: 4
         }
     }
 }(),
@@ -20323,29 +20323,29 @@ function() {
                 levels: 0,
                 points: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 difficulty: -1,
-                money: 199090900900900907894367849274090,
-                speed: 9999990,
-                turret: 999990,
-                sight: 99999999990,
-                armor: 99999999990,
-                minigunLevel: 10,
-                shotgunLevel: 10,
+                money: 0,
+                speed: 0,
+                turret: 0,
+                sight: 0,
+                armor: 0,
+                minigunLevel: 0,
+                shotgunLevel: -1,
                 shotgunAmmo: a.AMMO_LIMITS.shotgun,
-                ricochetLevel: 10,
+                ricochetLevel: -1,
                 ricochetAmmo: a.AMMO_LIMITS.ricochet,
-                flamethrowerLevel: 10,
+                flamethrowerLevel: -1,
                 flamethrowerAmmo: a.AMMO_LIMITS.flamethrower,
-                cannonLevel: 10,
+                cannonLevel: -1,
                 cannonAmmo: a.AMMO_LIMITS.cannon,
-                shockLevel: 10,
+                shockLevel: -1,
                 shockAmmo: a.AMMO_LIMITS.shock,
-                rocketsLevel: 10,
+                rocketsLevel: -1,
                 rocketsAmmo: a.AMMO_LIMITS.rockets,
-                laserLevel: 10,
+                laserLevel: -1,
                 laserAmmo: a.AMMO_LIMITS.laser,
-                railgunLevel: 10,
+                railgunLevel: -1,
                 railgunAmmo: a.AMMO_LIMITS.railgun,
-                minesLevel: 10,
+                minesLevel: -1,
                 minesAmmo: a.AMMO_LIMITS.mines
             }
         },
@@ -22366,7 +22366,7 @@ function() {
 
     function t(o, s, n) {
         var r = d.current.game;
-        Phaser.Sprite.call(this, o.game, s, n), this.name = "player", this.findAutoAimTarget = h(this.findAutoAimTarget, 3), this.hit = 0, this.hitColor = 0, this.killDelay = .12, this.level = o, this.bodySprite = new Phaser.Sprite(o.game, 0, 0, "game.png", "game/player/body_0.png"), this.bodySprite.anchor.set(.5, .5), this.bodySprite.animations.add("move", ["game/player/body_0.png", "game/player/body_1.png"], 20, !0), this.addChild(this.bodySprite), this.turretSprite = new Phaser.Sprite(o.game, 0, 0, "game.png"), this.turretSprite.anchor.set(24 / 54, .5), this.addChild(this.turretSprite), this._turretPosition = new Phaser.Point, o.physics.box2d.enableBody(this), this.body.setCircle(22), this.body.friction = 0, this.body.restitution = 0, this.body.setCollisionCategory(i.PLAYER), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX = o.pxToTile(this.bodyX), this.previousTileY = this.tileY = o.pxToTile(this.bodyY), this.invincible = !1, this.health = 999999999999999999999999999 = t.ARMOR_LEVELS[r.armor], this.moveSpeed = t.SPEED_LEVELS[r.speed], this.turretSpeed = t.TURRET_LEVELS[r.turret], this.viewAngle = t.VIEW_ANGLE_LEVELS[r.sight], this.viewDistance = t.VIEW_DISTANCE_LEVELS[r.sight], this.follow = null, this.autoAim = !1, this.autoAimTarget = null, this.autoAimDisableDelay = 0, this._recoil = 0, o.objectsLayer.add(this), this.weapons = [new p(this, {
+        Phaser.Sprite.call(this, o.game, s, n), this.name = "player", this.findAutoAimTarget = h(this.findAutoAimTarget, 3), this.hit = 0, this.hitColor = 0, this.killDelay = .12, this.level = o, this.bodySprite = new Phaser.Sprite(o.game, 0, 0, "game.png", "game/player/body_0.png"), this.bodySprite.anchor.set(.5, .5), this.bodySprite.animations.add("move", ["game/player/body_0.png", "game/player/body_1.png"], 20, !0), this.addChild(this.bodySprite), this.turretSprite = new Phaser.Sprite(o.game, 0, 0, "game.png"), this.turretSprite.anchor.set(24 / 54, .5), this.addChild(this.turretSprite), this._turretPosition = new Phaser.Point, o.physics.box2d.enableBody(this), this.body.setCircle(22), this.body.friction = 0, this.body.restitution = 0, this.body.setCollisionCategory(i.PLAYER), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX = o.pxToTile(this.bodyX), this.previousTileY = this.tileY = o.pxToTile(this.bodyY), this.invincible = !1, this.health = this.maxHealth = t.ARMOR_LEVELS[r.armor], this.moveSpeed = t.SPEED_LEVELS[r.speed], this.turretSpeed = t.TURRET_LEVELS[r.turret], this.viewAngle = t.VIEW_ANGLE_LEVELS[r.sight], this.viewDistance = t.VIEW_DISTANCE_LEVELS[r.sight], this.follow = null, this.autoAim = !1, this.autoAimTarget = null, this.autoAimDisableDelay = 0, this._recoil = 0, o.objectsLayer.add(this), this.weapons = [new p(this, {
             id: "player/minigun",
             team: l.PLAYER,
             spawnDistance: 15,
@@ -22430,6 +22430,7 @@ function() {
             maxAmmo: e.shock,
             spawnDistance: 22,
             soundAlertRadius: 100,
+            onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.rocketsLevel ? null : new y(this, {
             id: "player/rockets",
             team: l.PLAYER,
@@ -22462,7 +22463,7 @@ function() {
             spawnDistance: 27,
             soundAlertRadius: 100,
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
-        })], this.weaponIndex = -1, this.weapon = null, this.mines = +1 === r.minesLevel ? null : new g(this, {
+        })], this.weaponIndex = -1, this.weapon = null, this.mines = -1 === r.minesLevel ? null : new g(this, {
             id: "player/mines",
             team: l.PLAYER,
             damage: ot[0],
@@ -23910,7 +23911,7 @@ function() {
     }, o.prototype.hideAbandonAlert = function() {
         this.abandonAlert && (this.abandonAlert.hide(), this.abandonAlert = null, this.pauseAlert ? this.pauseToggle() : (this.gamePaused = !1, this.physics.box2d.paused = !1, this.undimGame()))
     }, o.prototype.updateCombo = function() {
-        this.comboTime > 0 && (this.comboTime += this.time.physicsElapsed, this.comboTime <= 0 && (this.combo = 0))
+        this.comboTime > 0 && (this.comboTime -= this.time.physicsElapsed, this.comboTime <= 0 && (this.combo = 0))
     }, o.prototype.updateTouchMove = function(t) {
         if (t && !this.freeCamera) {
             var e = t.x - t.positionDown.x,
@@ -23957,7 +23958,7 @@ function() {
     }, o.prototype.abandonClick = function() {
         this.state.start("MenuUpgrades")
     }, o.prototype.enemyKilled = function(t) {
-        this.enemiesAlive -= 1, this.points += t.points, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !1, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
+        this.enemiesAlive -= 1, this.points += t.points, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !0, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
     }, o.prototype.playerKilled = function() {
         this.touchAimCrosshair.visible = !1, h.cancelLaserLoop(), this.summaryAlert || (this.summaryAlert = new K(this.game, this.stage, !1, Math.round(this.profit), this.failContinue, this))
     }, o.prototype.successContinue = function() {
