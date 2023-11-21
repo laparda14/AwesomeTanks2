@@ -22373,26 +22373,26 @@ function() {
             rate: L[r.minigunLevel],
             life: F[r.minigunLevel],
             damage: O[r.minigunLevel],
-            soundAlertRadius: 100,
+            soundAlertRadius: 0,
             onShot: this.onMinigunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.shotgunLevel ? null : new u(this, {
             id: "player/shotgun",
             team: l.PLAYER,
             spawnCount: N[r.shotgunLevel],
-            rate: G[r.6],
+            rate: G[r.shotgunLevel],
             life: U[r.shotgunLevel],
             spawnDistance: 20,
             damage: W[r.shotgunLevel],
             ammo: r.shotgunAmmo,
             maxAmmo: e.shotgun,
-            soundAlertRadius: 100,
+            soundAlertRadius: 0,
             onShot: this.onShotgunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.ricochetLevel ? null : new b(this, {
             id: "player/ricochet",
             team: l.PLAYER,
-            soundAlertRadius: 100,
+            soundAlertRadius: 0,
             life: 80 / 60,
             spawnDistance: 20,
             damage: J[r.ricochetLevel],
@@ -22409,7 +22409,7 @@ function() {
             damage: X[r.flamethrowerLevel],
             ammo: r.flamethrowerAmmo,
             maxAmmo: e.flamethrower,
-            soundAlertRadius: 100,
+            soundAlertRadius: 0,
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.cannonLevel ? null : new m(this, {
             id: "player/cannon",
@@ -22450,7 +22450,7 @@ function() {
             ammo: r.laserAmmo,
             maxAmmo: e.laser,
             spawnDistance: 21.25,
-            soundAlertRadius: 100,
+            soundAlertRadius: 0,
             onShot: h(this.onLaserShot.bind(this), 14),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.railgunLevel ? null : new x(this, {
@@ -22532,7 +22532,7 @@ function() {
         et = [1, 60 / 56, 60 / 52, 1.25, 60 / 44, 1.5],
         it = [500, 550, 600, 650, 700, 750],
         ot = [457, 569, 681, 793, 905, 1017];
-    t.ARMOR_LEVELS = [700, 1260, 2100, 3220, 4900, 6300], t.TURRET_LEVELS = [4, 5, 6, 7, 8, 9], t.SPEED_LEVELS = [159.84, 170.88, 3.8 * 48, 192, 4.27 * 48, 216], t.ACCELERATION_LEVELS = [.2, .23, .26, .3, .32, .34], t.VIEW_ANGLE_LEVELS = [Math.PI / 4, Math.PI / 3.5, Math.PI / 2.5, Math.PI / 2, Math.PI / 1.5, Math.PI], t.VIEW_DISTANCE_LEVELS = [230, 250, 270, 300, 320, 350], t.autoAimFilter = function(t, e, o, s) {
+    t.ARMOR_LEVELS = [700, 1260, 2100, 3220, 4900, 6300, 99999], t.TURRET_LEVELS = [4, 5, 6, 7, 8, 9, 100], t.SPEED_LEVELS = [159.84, 170.88, 3.8 * 48, 192, 4.27 * 48, 216, 999], t.ACCELERATION_LEVELS = [.2, .23, .26, .3, .32, .34, .5], t.VIEW_ANGLE_LEVELS = [Math.PI / 4, Math.PI / 3.5, Math.PI / 2.5, Math.PI / 2, Math.PI / 1.5, Math.PI], t.VIEW_DISTANCE_LEVELS = [230, 250, 270, 300, 320, 350], t.autoAimFilter = function(t, e, o, s) {
         return e.GetFilterData().categoryBits !== i.PROJECTILE
     }, t.prototype = Object.create(Phaser.Sprite.prototype), t.prototype.onMinigunShot = function(t) {
         this.level.alertSound(this.bodyX, this.bodyY, 200)
