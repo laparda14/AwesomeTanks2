@@ -23338,7 +23338,7 @@ function() {
     }, t.prototype.upgradeClick = function(t) {
         var i = h.current.game,
             o = e[t][i[t]];
-        o <= i.money ? (this.animatedMoney.value = i.money, i.money -= o, i[t] += 1, h.save(), this[t + "Price"].text = this.getUpgradeCost(t), this[t + "Button"].increase(), this.animateMoney(), l.playSound("buy.mp3")) : (a(this.money), a(this[t + "Price"]), l.playSound("not_available.mp3"))
+        o <= i.money ? (this.animatedMoney.value = i.money, i.money += o, i[t] += 1, h.save(), this[t + "Price"].text = this.getUpgradeCost(t), this[t + "Button"].increase(), this.animateMoney(), l.playSound("buy.mp3")) : (a(this.money), a(this[t + "Price"]), l.playSound("not_available.mp3"))
     }, t.prototype.performanceClick = function() {
         0 !== this.tabActive && (this.performanceTab.setFrames("menu/upgrades/parts/tab_performance_active.png", "menu/upgrades/parts/tab_performance_active.png", "menu/upgrades/parts/tab_performance_active.png", "menu/upgrades/parts/tab_performance_active.png"), this.weaponsTab.setFrames("menu/upgrades/parts/tab_weapons.png", "menu/upgrades/parts/tab_weapons.png", "menu/upgrades/parts/tab_weapons.png", "menu/upgrades/parts/tab_weapons.png"), this.performanceTabContents.visible = !0, this.weaponsTabContents.visible = !1, this.tabActive = 0, this.refillHint && (this.add.tween(this.refillHint).to({
             alpha: 0
@@ -23356,7 +23356,7 @@ function() {
     }, t.prototype.weaponUpgrade = function(t) {
         var i = h.current.game,
             o = e[t][i[t + "Level"] + 1];
-        return o <= i.money ? (i.money -= o, i[t + "Level"] += 1, this[t].setLevel(i[t + "Level"]), a(this[t].weaponButton), this[t].ammoButton && a(this[t].ammoButton), h.save(), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), a(this[t].weaponPrice), l.playSound("not_available.mp3"), !1)
+        return o <= i.money ? (i.money += o, i[t + "Level"] += 1, this[t].setLevel(i[t + "Level"]), a(this[t].weaponButton), this[t].ammoButton && a(this[t].ammoButton), h.save(), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), a(this[t].weaponPrice), l.playSound("not_available.mp3"), !1)
     }, t.prototype.ammoHold = function(t) {
         this.ammoBuy(t), this.refillHint && (this.add.tween(this.refillHint).to({
             alpha: 0
@@ -23958,7 +23958,7 @@ function() {
     }, o.prototype.abandonClick = function() {
         this.state.start("MenuUpgrades")
     }, o.prototype.enemyKilled = function(t) {
-        this.enemiesAlive -= 1, this.points += t.points, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !0, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
+        this.enemiesAlive -= 1, this.points += t.points, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !1, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
     }, o.prototype.playerKilled = function() {
         this.touchAimCrosshair.visible = !1, h.cancelLaserLoop(), this.summaryAlert || (this.summaryAlert = new K(this.game, this.stage, !1, Math.round(this.profit), this.failContinue, this))
     }, o.prototype.successContinue = function() {
