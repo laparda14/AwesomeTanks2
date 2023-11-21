@@ -22384,8 +22384,8 @@ function() {
             life: U[r.shotgunLevel],
             spawnDistance: 20,
             damage: W[r.shotgunLevel],
-            ammo: 999999999,
-            maxAmmo: 999999999,
+            ammo: r.shotgunAmmo,
+            maxAmmo: e.shotgun,
             soundAlertRadius: 100,
             onShot: this.onShotgunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
@@ -22396,8 +22396,8 @@ function() {
             life: 80 / 60,
             spawnDistance: 20,
             damage: J[r.ricochetLevel],
-            ammo: 999999999,
-            maxAmmo: 999999999,
+            ammo: r.ricochetAmmo,
+            maxAmmo: e.ricochet,
             onShot: this.onRicochetShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.flamethrowerLevel ? null : new v(this, {
@@ -22407,8 +22407,8 @@ function() {
             rate: j[r.flamethrowerLevel],
             life: H[r.flamethrowerLevel],
             damage: X[r.flamethrowerLevel],
-            ammo: 999999999,
-            maxAmmo: 999999999,
+            ammo: r.flamethrowerAmmo,
+            maxAmmo: e.flamethrower,
             soundAlertRadius: 100,
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.cannonLevel ? null : new m(this, {
@@ -22417,8 +22417,8 @@ function() {
             damage: Y[r.cannonLevel],
             rate: z[r.cannonLevel],
             life: q[r.cannonLevel],
-            ammo: 999999999,
-            maxAmmo: 999999999,
+            ammo: r.cannonAmmo,
+            maxAmmo: e.cannon,
             spawnDistance: 9,
             onShot: this.onCannonShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
@@ -22426,11 +22426,10 @@ function() {
             id: "player/shock",
             team: l.PLAYER,
             damage: K[r.shockLevel],
-            ammo: 999999999,
-            maxAmmo: 999999999,
+            ammo: r.shockAmmo,
+            maxAmmo: e.shock,
             spawnDistance: 22,
             soundAlertRadius: 100,
-            onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.rocketsLevel ? null : new y(this, {
             id: "player/rockets",
             team: l.PLAYER,
