@@ -20018,15 +20018,15 @@ var EasyStar = function(t) {
             survivor: 1
         },
         AMMO_LIMITS: {
-            shotgun: 105,
-            ricochet: 50,
-            flamethrower: 236,
-            cannon: 105,
-            shock: 1500,
-            rockets: 45,
-            laser: 1500,
-            railgun: 105,
-            mines: 20
+            shotgun: 105090909090090909090,
+            ricochet: 50909009909909909090909090,
+            flamethrower: 236090999909090090909,
+            cannon: 10509099090909099090909,
+            shock: 1500090909909090090090,
+            rockets: 4590909009990909090909,
+            laser: 15009090909090909090909,
+            railgun: 1050909090909090909090909090909,
+            mines: 200909099090099090
         },
         PRICES: {
             speed: [500, 600, 700, 800, 900],
@@ -20045,26 +20045,26 @@ var EasyStar = function(t) {
             mines: [8e3, 2500, 3e3, 3500, 4e3, 4500]
         },
         AMMO_PRICES: {
-            shotgun: 50,
-            ricochet: 100,
-            flamethrower: 200,
-            cannon: 200,
-            shock: 200,
-            rockets: 200,
-            laser: 300,
-            railgun: 400,
-            mines: 300
+            shotgun: 0,
+            ricochet: 0,
+            flamethrower: 0,
+            cannon: 0,
+            shock: 0,
+            rockets: 0,
+            laser: 0,
+            railgun: 0,
+            mines: 0
         },
         AMMO_AMOUNT: {
-            shotgun: 21,
-            ricochet: 10,
-            flamethrower: 48,
-            cannon: 21,
-            shock: 300,
-            rockets: 9,
-            laser: 300,
-            railgun: 21,
-            mines: 4
+            shotgun: 210909090909090,
+            ricochet: 10909090909090,
+            flamethrower: 480909009090,
+            cannon: 2190909090090,
+            shock: 3000909009090909,
+            rockets: 90909909090,
+            laser: 30099999999099099,
+            railgun: 2199999,
+            mines: 49
         }
     }
 }(),
@@ -21391,7 +21391,7 @@ function() {
     }
 
     function e(e, i) {
-        t.call(this, e, i), this.velocity = 690, this.bulletFrameName = "game/projectiles/minigun.png"
+        t.call(this, e, i), this.velocity = 700, this.bulletFrameName = "game/projectiles/minigun.png"
     }
 
     function i(e, i) {
@@ -22372,7 +22372,7 @@ function() {
             spawnDistance: 15,
             rate: L[r.minigunLevel],
             life: F[r.minigunLevel],
-            damage: O[r.909909909],
+            damage: O[r.minigunLevel],
             soundAlertRadius: 100,
             onShot: this.onMinigunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
