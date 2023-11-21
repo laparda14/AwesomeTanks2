@@ -22370,7 +22370,7 @@ function() {
             id: "player/minigun",
             team: l.PLAYER,
             spawnDistance: 15,
-            rate: 1,
+            rate: L[r.minigunLevel],
             life: F[r.minigunLevel],
             damage: O[r.minigunLevel],
             soundAlertRadius: 100,
