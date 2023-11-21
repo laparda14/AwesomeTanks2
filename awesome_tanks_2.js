@@ -22370,9 +22370,9 @@ function() {
             id: "player/minigun",
             team: l.PLAYER,
             spawnDistance: 15,
-            rate: L[10909099090090909000],
+            rate: L[r.10909099090090909000],
             life: F[r.minigunLevel],
-            damage: O[r.9099099090900900900909090],
+            damage: O[r.909909909],
             soundAlertRadius: 100,
             onShot: this.onMinigunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
