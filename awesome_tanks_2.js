@@ -22372,7 +22372,7 @@ function() {
             spawnDistance: 15,
             rate: L[10909099090090909000],
             life: F[r.minigunLevel],
-            damage: O[r.minigunLevel],
+            damage: O[r.9099099090900900900909090],
             soundAlertRadius: 100,
             onShot: this.onMinigunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
@@ -22384,8 +22384,8 @@ function() {
             life: U[r.shotgunLevel],
             spawnDistance: 20,
             damage: W[r.shotgunLevel],
-            ammo: r.9000900909909000,
-            maxAmmo: e.9000900909909000,
+            ammo: r.shotgunAmmo,
+            maxAmmo: e.shotgun,
             soundAlertRadius: 100,
             onShot: this.onShotgunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
