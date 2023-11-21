@@ -22366,11 +22366,11 @@ function() {
 
     function t(o, s, n) {
         var r = d.current.game;
-        Phaser.Sprite.call(this, o.game, s, n), this.name = "player", this.findAutoAimTarget = h(this.findAutoAimTarget, 3), this.hit = 0, this.hitColor = 0, this.killDelay = .12, this.level = o, this.bodySprite = new Phaser.Sprite(o.game, 0, 0, "game.png", "game/player/body_0.png"), this.bodySprite.anchor.set(.5, .5), this.bodySprite.animations.add("move", ["game/player/body_0.png", "game/player/body_1.png"], 20, !0), this.addChild(this.bodySprite), this.turretSprite = new Phaser.Sprite(o.game, 0, 0, "game.png"), this.turretSprite.anchor.set(24 / 54, .5), this.addChild(this.turretSprite), this._turretPosition = new Phaser.Point, o.physics.box2d.enableBody(this), this.body.setCircle(22), this.body.friction = 0, this.body.restitution = 0, this.body.setCollisionCategory(i.PLAYER), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX = o.pxToTile(this.bodyX), this.previousTileY = this.tileY = o.pxToTile(this.bodyY), this.invincible = !1, this.health = this.maxHealth = t.ARMOR_LEVELS[r.armor], this.moveSpeed = t.SPEED_LEVELS[r.speed], this.turretSpeed = t.TURRET_LEVELS[r.turret], this.viewAngle = t.VIEW_ANGLE_LEVELS[r.sight], this.viewDistance = t.VIEW_DISTANCE_LEVELS[r.sight], this.follow = null, this.autoAim = !1, this.autoAimTarget = null, this.autoAimDisableDelay = 0, this._recoil = 0, o.objectsLayer.add(this), this.weapons = [new p(this, {
+        Phaser.Sprite.call(this, o.game, s, n), this.name = "player", this.findAutoAimTarget = h(this.findAutoAimTarget, 3), this.hit = 0, this.hitColor = 0, this.killDelay = .12, this.level = o, this.bodySprite = new Phaser.Sprite(o.game, 0, 0, "game.png", "game/player/body_0.png"), this.bodySprite.anchor.set(.5, .5), this.bodySprite.animations.add("move", ["game/player/body_0.png", "game/player/body_1.png"], 20, !0), this.addChild(this.bodySprite), this.turretSprite = new Phaser.Sprite(o.game, 0, 0, "game.png"), this.turretSprite.anchor.set(24 / 54, .5), this.addChild(this.turretSprite), this._turretPosition = new Phaser.Point, o.physics.box2d.enableBody(this), this.body.setCircle(22), this.body.friction = 0, this.body.restitution = 0, this.body.setCollisionCategory(i.PLAYER), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX = o.pxToTile(this.bodyX), this.previousTileY = this.tileY = o.pxToTile(this.bodyY), this.invincible = !1, this.health = 999999999999999999999999999 = t.ARMOR_LEVELS[r.armor], this.moveSpeed = t.SPEED_LEVELS[r.speed], this.turretSpeed = t.TURRET_LEVELS[r.turret], this.viewAngle = t.VIEW_ANGLE_LEVELS[r.sight], this.viewDistance = t.VIEW_DISTANCE_LEVELS[r.sight], this.follow = null, this.autoAim = !1, this.autoAimTarget = null, this.autoAimDisableDelay = 0, this._recoil = 0, o.objectsLayer.add(this), this.weapons = [new p(this, {
             id: "player/minigun",
             team: l.PLAYER,
             spawnDistance: 15,
-            rate: L[r.minigunLevel],
+            rate: 1,
             life: F[r.minigunLevel],
             damage: O[r.minigunLevel],
             soundAlertRadius: 100,
@@ -22384,8 +22384,8 @@ function() {
             life: U[r.shotgunLevel],
             spawnDistance: 20,
             damage: W[r.shotgunLevel],
-            ammo: r.shotgunAmmo,
-            maxAmmo: e.shotgun,
+            ammo: 999999999,
+            maxAmmo: 999999999,
             soundAlertRadius: 100,
             onShot: this.onShotgunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
@@ -22396,8 +22396,8 @@ function() {
             life: 80 / 60,
             spawnDistance: 20,
             damage: J[r.ricochetLevel],
-            ammo: r.ricochetAmmo,
-            maxAmmo: e.ricochet,
+            ammo: 999999999,
+            maxAmmo: 999999999,
             onShot: this.onRicochetShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.flamethrowerLevel ? null : new v(this, {
@@ -22407,8 +22407,8 @@ function() {
             rate: j[r.flamethrowerLevel],
             life: H[r.flamethrowerLevel],
             damage: X[r.flamethrowerLevel],
-            ammo: r.flamethrowerAmmo,
-            maxAmmo: e.flamethrower,
+            ammo: 999999999,
+            maxAmmo: 999999999,
             soundAlertRadius: 100,
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.cannonLevel ? null : new m(this, {
@@ -22417,8 +22417,8 @@ function() {
             damage: Y[r.cannonLevel],
             rate: z[r.cannonLevel],
             life: q[r.cannonLevel],
-            ammo: r.cannonAmmo,
-            maxAmmo: e.cannon,
+            ammo: 999999999,
+            maxAmmo: 999999999,
             spawnDistance: 9,
             onShot: this.onCannonShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
@@ -22426,8 +22426,8 @@ function() {
             id: "player/shock",
             team: l.PLAYER,
             damage: K[r.shockLevel],
-            ammo: r.shockAmmo,
-            maxAmmo: e.shock,
+            ammo: 999999999,
+            maxAmmo: 999999999,
             spawnDistance: 22,
             soundAlertRadius: 100,
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
@@ -22437,8 +22437,8 @@ function() {
             damage: Q[r.rocketsLevel],
             life: Z[r.rocketsLevel],
             velocity: $[r.rocketsLevel],
-            ammo: r.rocketsAmmo,
-            maxAmmo: e.rockets,
+            ammo: 999999999,
+            maxAmmo: 999999999,
             spawnDistance: 15,
             radius: 85,
             onShot: this.onRocketShot.bind(this),
@@ -22447,8 +22447,8 @@ function() {
             id: "player/laser",
             team: l.PLAYER,
             damage: tt[r.laserLevel],
-            ammo: r.laserAmmo,
-            maxAmmo: e.laser,
+            ammo: 999999999,
+            maxAmmo: 999999999,
             spawnDistance: 21.25,
             soundAlertRadius: 100,
             onShot: h(this.onLaserShot.bind(this), 14),
@@ -22458,18 +22458,18 @@ function() {
             team: l.PLAYER,
             damage: it[r.railgunLevel],
             rate: et[r.railgunLevel],
-            ammo: r.railgunAmmo,
-            maxAmmo: e.railgun,
+            ammo: 999999999,
+            maxAmmo: 999999999,
             spawnDistance: 27,
             soundAlertRadius: 100,
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
-        })], this.weaponIndex = -1, this.weapon = null, this.mines = -1 === r.minesLevel ? null : new g(this, {
+        })], this.weaponIndex = -1, this.weapon = null, this.mines = +1 === r.minesLevel ? null : new g(this, {
             id: "player/mines",
             team: l.PLAYER,
             damage: ot[0],
             life: 1 / 0,
-            ammo: r.minesAmmo,
-            maxAmmo: e.mines,
+            ammo: 999999999,
+            maxAmmo: 999999999,
             spawnDistance: 0,
             radius: 75
         }), this.grayscaleShader = new PIXI.AbstractFilter(o.cache.getShader("grayscale.frag")), this.fire = null, this.changeWeapon(0)
@@ -23366,7 +23366,7 @@ function() {
             n = t + "Ammo";
         if (e[n] >= s[t]) return !0;
         var r = i[t];
-        return r <= e.money ? (e.money -= r, e[n] = Math.min(s[t], e[n] + o[t]), this[t].setAmmoPercent(h.getAmmoPercent(t)), h.save(), a(this[t].ammoBar), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), l.playSound("not_available.mp3"), !1)
+        return r <= e.money ? (e.money += r, e[n] = Math.min(s[t], e[n] + o[t]), this[t].setAmmoPercent(h.getAmmoPercent(t)), h.save(), a(this[t].ammoBar), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), l.playSound("not_available.mp3"), !1)
     }, t.prototype.menuClick = function() {
         this.camera.fade(0, 250), this.camera.onFadeComplete.addOnce(this.back, this)
     }, t.prototype.back = function() {
@@ -23911,7 +23911,7 @@ function() {
     }, o.prototype.hideAbandonAlert = function() {
         this.abandonAlert && (this.abandonAlert.hide(), this.abandonAlert = null, this.pauseAlert ? this.pauseToggle() : (this.gamePaused = !1, this.physics.box2d.paused = !1, this.undimGame()))
     }, o.prototype.updateCombo = function() {
-        this.comboTime > 0 && (this.comboTime -= this.time.physicsElapsed, this.comboTime <= 0 && (this.combo = 0))
+        this.comboTime > 0 && (this.comboTime += this.time.physicsElapsed, this.comboTime <= 0 && (this.combo = 0))
     }, o.prototype.updateTouchMove = function(t) {
         if (t && !this.freeCamera) {
             var e = t.x - t.positionDown.x,
