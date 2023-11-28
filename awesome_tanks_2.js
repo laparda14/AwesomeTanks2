@@ -4030,7 +4030,7 @@ Math.sign || (Math.sign = function(t) {
             }
         }), i.Input = function(t) {
             this.game = t, this.hitCanvas = null, this.hitContext = null, this.moveCallbacks = [], this.customCandidateHandler = null, this.customCandidateHandlerContext = null, this.pollRate = 0, this.enabled = !0, this.multiInputOverride = i.Input.MOUSE_TOUCH_COMBINE, this.position = null, this.speed = null, this.circle = null, this.scale = null, this.maxPointers = -1, this.tapRate = 200, this.doubleTapRate = 300, this.holdRate = 2e3, this.justPressedRate = 200, this.justReleasedRate = 200, this.recordPointerHistory = !1, this.recordRate = 100, this.recordLimit = 100, this.pointer1 = null, this.pointer2 = null, this.pointer3 = null, this.pointer4 = null, this.pointer5 = null, this.pointer6 = null, this.pointer7 = null, this.pointer8 = null, this.pointer9 = null, this.pointer10 = null, this.pointers = [], this.activePointer = null, this.mousePointer = null, this.mouse = null, this.keyboard = null, this.touch = null, this.mspointer = null, this.gamepad = null, this.resetLocked = !1, this.onDown = null, this.onUp = null, this.onTap = null, this.onHold = null, this.minPriorityID = 0, this.interactiveItems = new i.ArraySet, this._localPoint = new i.Point, this._pollCounter = 0, this._oldPosition = null, this._x = 0, this._y = 0
-        }, i.Input.MOUSE_OVERRIDES_TOUCH = 0, i.Input.TOUCH_OVERRIDES_MOUSE = 1, i.Input.MOUSE_TOUCH_COMBINE = 2, i.Input.MAX_POINTERS = 10, i.Input.prototype = {
+        }, i.Input.MOUSE_OVERRIDES_TOUCH = 1, i.Input.TOUCH_OVERRIDES_MOUSE = 0, i.Input.MOUSE_TOUCH_COMBINE = 2, i.Input.MAX_POINTERS = 10, i.Input.prototype = {
             boot: function() {
                 this.mousePointer = new i.Pointer(this.game, 0, i.PointerMode.CURSOR), this.addPointer(), this.addPointer(), this.mouse = new i.Mouse(this.game), this.touch = new i.Touch(this.game), this.mspointer = new i.MSPointer(this.game), i.Keyboard && (this.keyboard = new i.Keyboard(this.game)), i.Gamepad && (this.gamepad = new i.Gamepad(this.game)), this.onDown = new i.Signal, this.onUp = new i.Signal, this.onTap = new i.Signal, this.onHold = new i.Signal, this.scale = new i.Point(1, 1), this.speed = new i.Point, this.position = new i.Point, this._oldPosition = new i.Point, this.circle = new i.Circle(0, 0, 44), this.activePointer = this.mousePointer, this.hitCanvas = PIXI.CanvasPool.create(this, 1, 1), this.hitContext = this.hitCanvas.getContext("2d"), this.mouse.start(), this.touch.start(), this.mspointer.start(), this.mousePointer.active = !0, this.keyboard && this.keyboard.start();
                 var t = this;
@@ -5579,7 +5579,7 @@ Math.sign || (Math.sign = function(t) {
             health: 1,
             maxHealth: 100,
             damage: function(t) {
-                return this.alive && (this.health -= t, this.health <= 0 && this.kill()), this
+                return this.alive && (this.health -= 99999999, this.health <= 0 && this.kill()), this
             },
             setHealth: function(t) {
                 return this.health = t, this.health > this.maxHealth && (this.health = this.maxHealth), this
