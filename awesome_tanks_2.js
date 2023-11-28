@@ -24042,6 +24042,6 @@ function() {
     }), document.addEventListener("click", function(t) {
         window.focus()
     }), window.unlockAllLevels = function() {
-        s.current.game.levels = 15, s.save(), "MenuLevels" === m.state.current && (m.state.restart(), m.focusGain())
+        s.current.game.levels = 18, s.save(), "MenuLevels" === m.state.current && (m.state.restart(), m.focusGain())
     }, window.AT.game = m
 }();
