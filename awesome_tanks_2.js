@@ -22182,7 +22182,7 @@ function() {
         var e = this.turretRotation;
         return this._turretPosition.x = this.bodyX + Math.cos(e) * t, this._turretPosition.y = this.bodyY + Math.sin(e) * t, this._turretPosition
     }, t.prototype.setHealth = function(t) {
-        this.lifebar.lastHealth = this.health = this.maxHealth = 0
+        this.lifebar.lastHealth = this.health = this.maxHealth = 100
     }, t.prototype.alert = function() {
         this._alerted = 2.5, this.alertOthers()
     }, t.prototype.alertOthers = function() {
