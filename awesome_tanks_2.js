@@ -23934,7 +23934,7 @@ function() {
                     var s = this.player.getTurretPosition(150);
                     this.touchAimCrosshair.visible ? (this.touchAimCrosshair.x += .5 * (s.x - this.touchAimCrosshair.x), this.touchAimCrosshair.y += .5 * (s.y - this.touchAimCrosshair.y)) : (this.touchAimCrosshair.x = this.player.bodyX, this.touchAimCrosshair.y = this.player.bodyY)
                 }
-                this.player.autoAim = !0, this.touchAimCrosshair.visible = !0
+                this.player.autoAim = !1, this.touchAimCrosshair.visible = !1
             } else this.player.autoAim = !0, this.touchAimCrosshair.visible = !1
         }
     }, o.prototype.update = function() {
@@ -24042,6 +24042,6 @@ function() {
     }), document.addEventListener("click", function(t) {
         window.focus()
     }), window.unlockAllLevels = function() {
-        s.current.game.levels = 18, s.save(), "MenuLevels" === m.state.current && (m.state.restart(), m.focusGain())
+        s.current.game.levels = 20, s.save(), "MenuLevels" === m.state.current && (m.state.restart(), m.focusGain())
     }, window.AT.game = m
 }();
