@@ -23934,7 +23934,7 @@ function() {
                     var s = this.player.getTurretPosition(150);
                     this.touchAimCrosshair.visible ? (this.touchAimCrosshair.x += .5 * (s.x - this.touchAimCrosshair.x), this.touchAimCrosshair.y += .5 * (s.y - this.touchAimCrosshair.y)) : (this.touchAimCrosshair.x = this.player.bodyX, this.touchAimCrosshair.y = this.player.bodyY)
                 }
-                this.player.autoAim = !1, this.touchAimCrosshair.visible = !0
+                this.player.autoAim = !0, this.touchAimCrosshair.visible = !0
             } else this.player.autoAim = !0, this.touchAimCrosshair.visible = !1
         }
     }, o.prototype.update = function() {
@@ -23958,7 +23958,7 @@ function() {
     }, o.prototype.abandonClick = function() {
         this.state.start("MenuUpgrades")
     }, o.prototype.enemyKilled = function(t) {
-        this.enemiesAlive -= 1, this.points += t.points, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !0, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
+        this.enemiesAlive -= 1000, this.points += t.points, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !0, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
     }, o.prototype.playerKilled = function() {
         this.touchAimCrosshair.visible = !1, h.cancelLaserLoop(), this.summaryAlert || (this.summaryAlert = new K(this.game, this.stage, !1, Math.round(this.profit), this.failContinue, this))
     }, o.prototype.successContinue = function() {
