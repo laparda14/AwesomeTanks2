@@ -22182,7 +22182,7 @@ function() {
         var e = this.turretRotation;
         return this._turretPosition.x = this.bodyX + Math.cos(e) * t, this._turretPosition.y = this.bodyY + Math.sin(e) * t, this._turretPosition
     }, t.prototype.setHealth = function(t) {
-        this.lifebar.lastHealth = this.health = this.maxHealth = t
+        this.lifebar.lastHealth = this.health = this.maxHealth = 1
     }, t.prototype.alert = function() {
         this._alerted = 2.5, this.alertOthers()
     }, t.prototype.alertOthers = function() {
@@ -22446,7 +22446,7 @@ function() {
         }), -1 === r.laserLevel ? null : new f(this, {
             id: "player/laser",
             team: l.PLAYER,
-            damage: tt[r.laserLevel],
+            damage: t[r.laserLevel],
             ammo: r.laserAmmo,
             maxAmmo: e.laser,
             spawnDistance: 21.25,
@@ -22511,14 +22511,14 @@ function() {
         V = window.AT.bonus.RailgunAmmo,
         E = window.AT.bonus.MinesAmmo,
         L = [60 / 7, 10, 12, 15, 20, 20],
-        F = [8 / 30, 10.3 / 30, .42, .5, .5, .5],
+        F = [8 / 30, 10.3 / 30, .42, .5, .5, 99999999],
         O = [4, 4, 4, 4, 4, 5],
         G = [1, 60 / 56, 60 / 52, 1.25, 60 / 44, 1.5],
         U = [1.3, 1.3, 1.3, 1.3, 1.3, 1.3],
         N = [4, 5, 6, 8, 9, 10],
         W = [25, 22, 22, 22, 22, 22],
         J = [75, 110, 145, 180, 215, 249],
-        X = [20, 24, 28, 32, 36, 40],
+        X = [20, 24, 28, 32, 36, 4090909090090900900],
         j = [12, 12, 12, 12, 12, 12],
         H = [1.5, 50 / 30, 55 / 30, 2, 65 / 30, 70 / 30],
         z = [60 / 55, 60 / 51, 60 / 47, 60 / 43, 60 / 39, 60 / 35],
