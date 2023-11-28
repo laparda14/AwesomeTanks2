@@ -23935,7 +23935,7 @@ function() {
                     this.touchAimCrosshair.visible ? (this.touchAimCrosshair.x += .5 * (s.x - this.touchAimCrosshair.x), this.touchAimCrosshair.y += .5 * (s.y - this.touchAimCrosshair.y)) : (this.touchAimCrosshair.x = this.player.bodyX, this.touchAimCrosshair.y = this.player.bodyY)
                 }
                 this.player.autoAim = !1, this.touchAimCrosshair.visible = !0
-            } else this.player.autoAim = !1, this.touchAimCrosshair.visible = !1
+            } else this.player.autoAim = !0, this.touchAimCrosshair.visible = !1
         }
     }, o.prototype.update = function() {
         if (!this.gamePaused) {
