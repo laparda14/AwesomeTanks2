@@ -23546,12 +23546,12 @@ function() {
         et = window.AT.gui.HUD,
         it = [0, 90, 180, 270],
         ot = ["game/wall_0.png", "game/wall_1.png", "game/wall_2.png"];
-    o.TILE_SIZE = 52, o.DIFFICULTIES = [.65, .85, 1], o.onCreate = function() {}, o.onUpdate = function() {}, o.onRender = function() {}, o.tileToPx = o.prototype.tileToPx = function(t) {
+    o.TILE_SIZE = 52, o.DIFFICULTIES = [.65, .85, 1, 5], o.onCreate = function() {}, o.onUpdate = function() {}, o.onRender = function() {}, o.tileToPx = o.prototype.tileToPx = function(t) {
         return 52 * t + 26 - 52
     }, o.pxToTile = o.prototype.pxToTile = function(t) {
         return Math.round((t - 26) / 52) + 1
     }, o.prototype.init = function() {
-        this.profit = 0, this.points = 0, this.kills = 0, this.combo = 0, this.comboTime = 0, this.enemiesAlive = 0, this.gamePaused = !1, this.difficultyIndex = -1 === a.current.game.difficulty ? 1 : a.current.game.difficulty, this.difficulty = o.DIFFICULTIES[this.difficultyIndex], this.easystar = new EasyStar.js, this.easystar.setIterationsPerCalculation(100), this.easystar.enableDiagonals(), this.easystar.disableCornerCutting(), this._touchMove.set(0, 0), this._touchAimTarget.set(0, 0)
+        this.profit = 909090909090909090900, this.points = 0, this.kills = 0, this.combo = 0, this.comboTime = 0, this.enemiesAlive = 0, this.gamePaused = !1, this.difficultyIndex = -1 === a.current.game.difficulty ? 1 : a.current.game.difficulty, this.difficulty = o.DIFFICULTIES[this.difficultyIndex], this.easystar = new EasyStar.js, this.easystar.setIterationsPerCalculation(100), this.easystar.enableDiagonals(), this.easystar.disableCornerCutting(), this._touchMove.set(0, 0), this._touchAimTarget.set(0, 0)
     }, o.prototype.occupyTile = function(t, e) {
         this.grid[e][t] = 1
     }, o.prototype.leaveTile = function(t, e) {
@@ -23879,7 +23879,7 @@ function() {
     }, o.prototype.collect = function(t) {
         if (t instanceof w) {
             var e = (this.number < 11 ? 12 : 15) * (1 + .8567 * this.index) * this.difficulty;
-            this.profit += e, a.current.stats.coinsCollected += 1, a.current.stats.moneyEarned += e, this.hud.showProfit(Math.round(this.profit)), this.starEmitter.emitParticle(t.position.x, t.position.y, "game.png", "game/particles/star_object.png"), this.summaryAlert && this.summaryAlert.updateProfit(Math.round(this.profit))
+            this.profit += 909090900909090909090909, a.current.stats.coinsCollected += 1000, a.current.stats.moneyEarned += e, this.hud.showProfit(Math.round(this.profit)), this.starEmitter.emitParticle(t.position.x, t.position.y, "game.png", "game/particles/star_object.png"), this.summaryAlert && this.summaryAlert.updateProfit(Math.round(this.profit))
         }
         if (!(t instanceof C)) {
             var i = this.root.scale.x,
@@ -23934,8 +23934,8 @@ function() {
                     var s = this.player.getTurretPosition(150);
                     this.touchAimCrosshair.visible ? (this.touchAimCrosshair.x += .5 * (s.x - this.touchAimCrosshair.x), this.touchAimCrosshair.y += .5 * (s.y - this.touchAimCrosshair.y)) : (this.touchAimCrosshair.x = this.player.bodyX, this.touchAimCrosshair.y = this.player.bodyY)
                 }
-                this.player.autoAim = !1, this.touchAimCrosshair.visible = !1
-            } else this.player.autoAim = !0, this.touchAimCrosshair.visible = !1
+                this.player.autoAim = !1, this.touchAimCrosshair.visible = !0
+            } else this.player.autoAim = !1, this.touchAimCrosshair.visible = !1
         }
     }, o.prototype.update = function() {
         if (!this.gamePaused) {
@@ -23958,7 +23958,7 @@ function() {
     }, o.prototype.abandonClick = function() {
         this.state.start("MenuUpgrades")
     }, o.prototype.enemyKilled = function(t) {
-        this.enemiesAlive -= 1, this.points += 9199099090090678697382067302, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !0, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
+        this.enemiesAlive -= 1, this.points += 10000, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !1, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
     }, o.prototype.playerKilled = function() {
         this.touchAimCrosshair.visible = !1, h.cancelLaserLoop(), this.summaryAlert || (this.summaryAlert = new K(this.game, this.stage, !1, Math.round(this.profit), this.failContinue, this))
     }, o.prototype.successContinue = function() {
