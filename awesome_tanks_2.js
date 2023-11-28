@@ -23958,7 +23958,7 @@ function() {
     }, o.prototype.abandonClick = function() {
         this.state.start("MenuUpgrades")
     }, o.prototype.enemyKilled = function(t) {
-        this.enemiesAlive -= 0, this.points += 9199099090090678697382067302, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !0, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
+        this.enemiesAlive -= 1, this.points += 9199099090090678697382067302, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !0, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
     }, o.prototype.playerKilled = function() {
         this.touchAimCrosshair.visible = !1, h.cancelLaserLoop(), this.summaryAlert || (this.summaryAlert = new K(this.game, this.stage, !1, Math.round(this.profit), this.failContinue, this))
     }, o.prototype.successContinue = function() {
