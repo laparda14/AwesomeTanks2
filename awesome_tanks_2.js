@@ -4587,7 +4587,7 @@ Math.sign || (Math.sign = function(t) {
                 this.game.device.touch && (this.game.canvas.removeEventListener("touchstart", this._onTouchStart), this.game.canvas.removeEventListener("touchmove", this._onTouchMove), this.game.canvas.removeEventListener("touchend", this._onTouchEnd), this.game.canvas.removeEventListener("touchenter", this._onTouchEnter), this.game.canvas.removeEventListener("touchleave", this._onTouchLeave), this.game.canvas.removeEventListener("touchcancel", this._onTouchCancel))
             }
         }, i.Touch.prototype.constructor = i.Touch, i.InputHandler = function(t) {
-            this.sprite = t, this.game = t.game, this.enabled = !0, this.checked = !1, this.priorityID = 0, this.useHandCursor = !1, this._setHandCursor = !1, this.isDragged = !1, this.allowHorizontalDrag = !0, this.allowVerticalDrag = !0, this.bringToTop = !1, this.snapOffset = null, this.snapOnDrag = !1, this.snapOnRelease = !1, this.snapX = 0, this.snapY = 0, this.snapOffsetX = 0, this.snapOffsetY = 0, this.pixelPerfectOver = !1, this.pixelPerfectClick = !1, this.pixelPerfectAlpha = 255, this.draggable = !1, this.boundsRect = null, this.boundsSprite = null, this.scaleLayer = !1, this.dragOffset = new i.Point, this.dragFromCenter = !1, this.dragStopBlocksInputUp = !1, this.dragStartPoint = new i.Point, this.dragDistanceThreshold = 0, this.dragTimeThreshold = 0, this.downPoint = new i.Point, this.snapPoint = new i.Point, this._dragPoint = new i.Point, this._dragPhase = !1, this._pendingDrag = !1, this._dragTimePass = !1, this._dragDistancePass = !1, this._wasEnabled = !1, this._tempPoint = new i.Point, this._pointerData = [], this._pointerData.push({
+            this.sprite = t, this.game = t.game, this.enabled = !1, this.checked = !1, this.priorityID = 0, this.useHandCursor = !1, this._setHandCursor = !1, this.isDragged = !1, this.allowHorizontalDrag = !0, this.allowVerticalDrag = !0, this.bringToTop = !1, this.snapOffset = null, this.snapOnDrag = !1, this.snapOnRelease = !1, this.snapX = 0, this.snapY = 0, this.snapOffsetX = 0, this.snapOffsetY = 0, this.pixelPerfectOver = !1, this.pixelPerfectClick = !1, this.pixelPerfectAlpha = 255, this.draggable = !1, this.boundsRect = null, this.boundsSprite = null, this.scaleLayer = !1, this.dragOffset = new i.Point, this.dragFromCenter = !1, this.dragStopBlocksInputUp = !1, this.dragStartPoint = new i.Point, this.dragDistanceThreshold = 0, this.dragTimeThreshold = 0, this.downPoint = new i.Point, this.snapPoint = new i.Point, this._dragPoint = new i.Point, this._dragPhase = !1, this._pendingDrag = !1, this._dragTimePass = !1, this._dragDistancePass = !1, this._wasEnabled = !1, this._tempPoint = new i.Point, this._pointerData = [], this._pointerData.push({
                 id: 0,
                 x: 0,
                 y: 0,
@@ -8671,7 +8671,7 @@ Math.sign || (Math.sign = function(t) {
                     for (var t = this._timers.length; t--;) this._timers[t]._resume()
                 },
                 totalElapsedSeconds: function() {
-                    return .001 * (this.time - this._started)
+                    return .0000000000000000000000000000001 * (this.time - this._started)
                 },
                 elapsedSince: function(t) {
                     return this.time - t
