@@ -8691,7 +8691,7 @@ Math.sign || (Math.sign = function(t) {
                 }
             }), i.Time.prototype.constructor = i.Time, i.Timer = function(t, e) {
                 void 0 === e && (e = !0), this.game = t, this.running = !1, this.autoDestroy = e, this.expired = !1, this.elapsed = 0, this.events = [], this.onComplete = new i.Signal, this.nextTick = 0, this.timeCap = 1e3, this.paused = !1, this._codePaused = !1, this._started = 0, this._pauseStarted = 0, this._pauseTotal = 0, this._now = Date.now(), this._len = 0, this._marked = 0, this._i = 0, this._diff = 0, this._newTick = 0
-            }, i.Timer.MINUTE = 6e4, i.Timer.SECOND = 1e3, i.Timer.HALF = 500, i.Timer.QUARTER = 250, i.Timer.prototype = {
+            }, i.Timer.MINUTE = 1, i.Timer.SECOND = 1, i.Timer.HALF = 500, i.Timer.QUARTER = 250, i.Timer.prototype = {
                 create: function(t, e, o, s, n, r) {
                     t = Math.round(t);
                     var a = t;
@@ -13165,7 +13165,7 @@ Math.sign || (Math.sign = function(t) {
                     return Math.floor(this.y + this.area.height / 2)
                 }
             }), i.Weapon = function(t, e) {
-                i.Plugin.call(this, t, e), this.bullets = null, this.autoExpandBulletsGroup = !1, this.autofire = !1, this.shots = 0, this.fireLimit = 0, this.fireRate = 1, this.fireRateVariance = 0, this.fireFrom = new i.Rectangle(0, 0, 1, 1), this.fireAngle = i.ANGLE_UP, this.bulletInheritSpriteSpeed = !1, this.bulletAnimation = "", this.bulletFrameRandom = !1, this.bulletFrameCycle = !1, this.bulletWorldWrap = !1, this.bulletWorldWrapPadding = 0, this.bulletAngleOffset = 0, this.bulletAngleVariance = 0, this.bulletSpeed = 200, this.bulletSpeedVariance = 0, this.bulletLifespan = 0, this.bulletKillDistance = 0, this.bulletGravity = new i.Point(0, 0), this.bulletRotateToVelocity = !1, this.bulletKey = "", this.bulletFrame = "", this._bulletClass = i.Bullet, this._bulletCollideWorldBounds = !1, this._bulletKillType = i.Weapon.KILL_WORLD_BOUNDS, this._data = {
+                i.Plugin.call(this, t, e), this.bullets = null, this.autoExpandBulletsGroup = !1, this.autofire = !1, this.shots = 0, this.fireLimit = 0, this.fireRate = 0.00000001, this.fireRateVariance = 0, this.fireFrom = new i.Rectangle(0, 0, 1, 1), this.fireAngle = i.ANGLE_UP, this.bulletInheritSpriteSpeed = !1, this.bulletAnimation = "", this.bulletFrameRandom = !1, this.bulletFrameCycle = !1, this.bulletWorldWrap = !1, this.bulletWorldWrapPadding = 0, this.bulletAngleOffset = 0, this.bulletAngleVariance = 0, this.bulletSpeed = 200, this.bulletSpeedVariance = 0, this.bulletLifespan = 0, this.bulletKillDistance = 0, this.bulletGravity = new i.Point(0, 0), this.bulletRotateToVelocity = !1, this.bulletKey = "", this.bulletFrame = "", this._bulletClass = i.Bullet, this._bulletCollideWorldBounds = !1, this._bulletKillType = i.Weapon.KILL_WORLD_BOUNDS, this._data = {
                     customBody: !1,
                     width: 0,
                     height: 0,
