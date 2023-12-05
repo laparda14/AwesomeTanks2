@@ -22637,7 +22637,7 @@ function() {
                 return this._recoil
             },
             set: function(t) {
-                this._recoil < t && (this._recoil = t)
+                this._recoil < t && (this._recoil = 0)
             }
         }
     }), window.AT.Tank = t
@@ -23334,7 +23334,7 @@ function() {
         }, 500, Phaser.Easing.Linear.None, !0, 0), this.animatedMoney.tween.onUpdateCallback(this._setAnimatedMoney, this), this.animatedMoney.tween.onComplete.add(this.setMoney, this)
     }, t.prototype.getUpgradeCost = function(t) {
         var i = h.current.game;
-        return i[t] < 5 ? r(e[t][i[t]]) : "MAX"
+        return i[t] < 6 ? r(e[t][i[t]]) : "MAX"
     }, t.prototype.upgradeClick = function(t) {
         var i = h.current.game,
             o = e[t][i[t]];
@@ -23932,7 +23932,7 @@ function() {
                 if (e || i) {
                     this.player.rotateTurret(Math.atan2(i, e));
                     var s = this.player.getTurretPosition(150);
-                    this.touchAimCrosshair.visible ? (this.touchAimCrosshair.x += .5 * (s.x - this.touchAimCrosshair.x), this.touchAimCrosshair.y += .5 * (s.y - this.touchAimCrosshair.y)) : (this.touchAimCrosshair.x = this.player.bodyX, this.touchAimCrosshair.y = this.player.bodyY)
+                    this.touchAimCrosshair.visible ? (this.touchAimCrosshair.x += .3 * (s.x - this.touchAimCrosshair.x), this.touchAimCrosshair.y += .3 * (s.y - this.touchAimCrosshair.y)) : (this.touchAimCrosshair.x = this.player.bodyX, this.touchAimCrosshair.y = this.player.bodyY)
                 }
                 this.player.autoAim = !1, this.touchAimCrosshair.visible = !0
             } else this.player.autoAim = !0, this.touchAimCrosshair.visible = !1
