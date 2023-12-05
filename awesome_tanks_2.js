@@ -8671,7 +8671,7 @@ Math.sign || (Math.sign = function(t) {
                     for (var t = this._timers.length; t--;) this._timers[t]._resume()
                 },
                 totalElapsedSeconds: function() {
-                    return .00000000000000000000000000000000000000000000001 * (this.time - this._started)
+                    return .001 * (this.time - this._started)
                 },
                 elapsedSince: function(t) {
                     return this.time - t
