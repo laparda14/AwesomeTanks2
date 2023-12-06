@@ -21563,7 +21563,7 @@ function() {
         e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.sprite.kill(), t.setZeroVelocity())
     }, s.prototype.onBulletKilled = function(t) {
         t.lifespan <= 0 && (this.game.state.getCurrentState().explosions.explode(t.body.x, t.body.y, 75, this.damage, this.team), t.body.kill(), t.body.setZeroVelocity())
-    }, n.prototype = Object.create(t.prototype), n.prototype.startFire, n.prototype.stopFire = function() {
+    }, n.prototype = Object.create(t.prototype), n.prototype.startFire = function() {
         this.team === p.PLAYER && (this.tank.follow ? !this._fire && this.tank.follow.alive && this.tank.follow.kill() : !this._fire && this.ammo > 0 && this.shoot()), this._fire = !0
     }, n.prototype.deactivate = function() {
         this.stopFire(), this.tank.follow && this.tank.follow.alive && (this.tank.follow.requestKill = !0)
