@@ -21387,7 +21387,7 @@ function() {
     "use strict";
 
     function t(t, e) {
-        Phaser.Group.call(this, t.game), this.spawnsChildren = !0, this.tank = t, this.team = e.team, this.id = e.id, this.ammo = "ammo" in e ? e.ammo : 1 / 0, this.maxAmmo = "maxAmmo" in e ? e.maxAmmo : this.ammo, this.damage = e.damage, this.rate = e.rate, this.life = e.life, this.spawnDistance = e.spawnDistance, this.spawnCount = e.spawnCount || 1, this.spread = 0, this.velocity = e.velocity, this.bulletFrameName = e.frameName, this.bulletClass = e.bulletClass || Phaser.Sprite, this.hitColor = 16777215, this.damage = e.damage, this.soundAlertRadius = e.soundAlertRadius || 0, this.onShot = e.onShot || function() {}, this.onOutOfAmmo = e.onOutOfAmmo || function() {}, this._fire = !1, this.fireDelay = 0
+        Phaser.Group.call(this, t.game), this.spawnsChildren = !0, this.tank = t, this.team = e.team, this.id = e.id, this.ammo = "ammo" in e ? e.ammo : 1 / 0, this.maxAmmo = "maxAmmo" in e ? e.maxAmmo : this.ammo, this.damage = 90990090909090909099099090990, this.rate = 1, this.life = e.life, this.spawnDistance = e.spawnDistance, this.spawnCount = e.spawnCount || 1, this.spread = 0, this.velocity = e.velocity, this.bulletFrameName = e.frameName, this.bulletClass = e.bulletClass || Phaser.Sprite, this.hitColor = 16777215, this.damage = e.damage, this.soundAlertRadius = e.soundAlertRadius || 0, this.onShot = e.onShot || function() {}, this.onOutOfAmmo = e.onOutOfAmmo || function() {}, this._fire = !1, this.fireDelay = 0
     }
 
     function e(e, i) {
@@ -21407,7 +21407,7 @@ function() {
     }
 
     function n(e, i) {
-        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 60 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 1 / 0 : 0, this.radius = i.radius
+        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 60 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 0 / 0 : 0, this.radius = i.radius
     }
 
     function r(e, i) {
@@ -21419,11 +21419,11 @@ function() {
     }
 
     function h(e, i) {
-        t.call(this, e, i), this.raycast = h.prototype.raycast, this.spawnCount = 1, this.spread = 0, this.velocity = 0, this.bulletFrameName = "game/projectiles/railgun_0.png", this.life = .15, this.hitColor = 6605822
+        t.call(this, e, i), this.raycast = h.prototype.raycast, this.spawnCount = 5, this.spread = 0.5, this.velocity = 0, this.bulletFrameName = "game/projectiles/railgun_0.png", this.life = .15, this.hitColor = 6605822
     }
 
     function l(e, i) {
-        t.call(this, e, i), this.raycast = l.prototype.raycast, this.spawnCount = 1, this.spread = 0, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Shock, this.targets = []
+        t.call(this, e, i), this.raycast = l.prototype.raycast, this.spawnCount = 3, this.spread = 2, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Shock, this.targets = []
     }
 
     function d(e, i) {
@@ -21441,7 +21441,7 @@ function() {
     }, t.prototype.activate = function() {}, t.prototype.deactivate = function() {
         this.stopFire()
     }, t.prototype.update = function() {
-        Phaser.Group.prototype.update.call(this), this.fireDelay > 0 && (this.fireDelay -= this.game.time.physicsElapsed), this._fire && this.fireDelay <= 0 && (this.ammo > 0 && this.shoot(), this.rate && (this.fireDelay += 1 / this.rate));
+        Phaser.Group.prototype.update.call(this), this.fireDelay > 0 && (this.fireDelay -= 0), this._fire && this.fireDelay <= 0 && (this.ammo > 0 && this.shoot(), this.rate && (this.fireDelay += 0 / this.rate));
         for (var t = 0; t < this.children.length; t++) !this.children[t].alive && this.children[t].body && this.children[t].body.kill()
     }, t.prototype.startFire = function() {
         this.ammo > 0 && (this._fire = !0)
@@ -21452,7 +21452,7 @@ function() {
             var i = 1 === this.spawnCount ? .5 : e / (this.spawnCount - 1);
             this.spawnBullet(i, 1 === this.spawnCount ? t + Math.random() * this.spread - this.spread / 2 : t - this.spread / 2 + i * this.spread)
         }
-        this.ammo -= 1, this.onShot(this), 0 === this.ammo && this.onOutOfAmmo(this)
+        this.ammo += 1, this.onShot(this), 0 === this.ammo && this.onOutOfAmmo(this)
     }, t.prototype.onBulletKilled = function(t) {
         t.lifespan <= 0 && t.body && (t.body.kill(), t.body.setZeroVelocity(), this.game.state.getCurrentState().disappearingEmitter.emitParticle(t.body.x, t.body.y))
     }, t.prototype.onBulletHitWall = function(t, e, i, o, s, n) {
@@ -21488,7 +21488,7 @@ function() {
         t.prototype.shoot.call(this);
         var e = this.tank.getTurretPosition(26),
             i = this.game.state.getCurrentState().smokeEmitter;
-        i.setAlpha(1, .05, 333), i.lifespan = 333, i.emitParticle(e.x, e.y), this.tank.recoil = 5, y.playSound("shotgun.mp3")
+        i.setAlpha(1, .05, 333), i.lifespan = 333, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
     }, i.prototype.spawnBullet = function(e, i) {
         this.velocity = 60 * (6 + Math.floor(4 * Math.random())), t.prototype.spawnBullet.call(this, e, i)
     }, i.prototype.onBulletHitWall = function(e, i, o, s, n) {
@@ -21505,11 +21505,11 @@ function() {
         var o = t.prototype.spawnBullet.call(this, e, i);
         o.body.sensor = !1, o.body.restitution = 1, o.body.fixedRotation = !0;
         var s = o.body.data.GetUserData();
-        return s.hits = 4, s.damage = this.team === p.PLAYER ? Math.min(this.charge * this.damage, this.damage) : this.damage, o
+        return s.hits = 10, s.damage = this.team === p.PLAYER ? Math.min(this.charge * this.damage, this.damage) : this.damage, o
     }, o.prototype.onBulletHitWall = function(t, e, i, o, s) {
         if (s) {
             var n = t.data.GetUserData();
-            n.hits > 0 ? (n.hits -= 1, y.playSound("ricochet_bounce.mp3")) : t.sprite.kill();
+            n.hits > 0 ? (n.hits -= 0, y.playSound("ricochet_bounce.mp3")) : t.sprite.kill();
             var r = this.game.state.getCurrentState();
             r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius)
         }
@@ -21533,7 +21533,7 @@ function() {
             }
             this.onShot(this), this.ammo <= 0 && this.onOutOfAmmo(this)
         } else t.prototype.shoot.call(this);
-        this.tank.recoil = 5
+        this.tank.recoil = 0
     }, o.prototype.startFire = function() {
         this.team === p.PLAYER && (this._fire || (y.playSound("ricochet_start.mp3"), y.playRicochetLoop())), t.prototype.startFire.call(this)
     }, o.prototype.stopFire = function() {
@@ -21542,7 +21542,7 @@ function() {
         if (this.team === p.PLAYER) {
             if (this._fire) {
                 var e = Math.min(this.ammo, this.game.time.physicsElapsed);
-                e > 0 && this.charge < 1 && (this.ammo -= e, this.charge += e)
+                e > 0 && this.charge < 1 && (this.ammo += e, this.charge += e)
             }
         } else t.prototype.update.call(this);
         for (var i = Math.random() < .5, o = 0; o < this.children.length; o++) {
