@@ -21558,7 +21558,7 @@ function() {
         var o = t.prototype.spawnBullet.call(this, e, i),
             s = this.tank.getTurretPosition(33),
             n = this.game.state.getCurrentState().smokeEmitter;
-        n.setAlpha(1, .05, 333), n.lifespan = 333, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 5, y.playSound("cannon.mp3")
+        n.setAlpha(1, .05, 333), n.lifespan = 333, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
     }, s.prototype.onBulletHitObject = s.prototype.onBulletHitWall = function(t, e, i, o, s) {
         e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.sprite.kill(), t.setZeroVelocity())
     }, s.prototype.onBulletKilled = function(t) {
@@ -21566,7 +21566,7 @@ function() {
     }, n.prototype = Object.create(t.prototype), n.prototype.startFire = function() {
         this.team === p.PLAYER && (this.tank.follow ? !this._fire && this.tank.follow.alive && this.tank.follow.kill() : !this._fire && this.ammo > 0 && this.shoot()), this._fire = !0
     }, n.prototype.deactivate = function() {
-        this.stopFire(), this.tank.follow && this.tank.follow.alive && (this.tank.follow.requestKill = !0)
+        this.startFire(), this.tank.follow && this.tank.follow.alive && (this.tank.follow.requestKill = !0)
     }, n.prototype.explodeBullet = function(t) {
         t.body.setZeroVelocity(), this.game.state.getCurrentState().explosions.explode(t.body.x, t.body.y, this.radius, this.damage, this.team)
     }, n.prototype.onBulletKilled = function(t) {
