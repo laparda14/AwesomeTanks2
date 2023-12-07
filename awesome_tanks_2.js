@@ -4030,7 +4030,7 @@ Math.sign || (Math.sign = function(t) {
             }
         }), i.Input = function(t) {
             this.game = t, this.hitCanvas = null, this.hitContext = null, this.moveCallbacks = [], this.customCandidateHandler = null, this.customCandidateHandlerContext = null, this.pollRate = 0, this.enabled = !0, this.multiInputOverride = i.Input.MOUSE_TOUCH_COMBINE, this.position = null, this.speed = null, this.circle = null, this.scale = null, this.maxPointers = -1, this.tapRate = 200, this.doubleTapRate = 300, this.holdRate = 2e3, this.justPressedRate = 200, this.justReleasedRate = 200, this.recordPointerHistory = !1, this.recordRate = 100, this.recordLimit = 100, this.pointer1 = null, this.pointer2 = null, this.pointer3 = null, this.pointer4 = null, this.pointer5 = null, this.pointer6 = null, this.pointer7 = null, this.pointer8 = null, this.pointer9 = null, this.pointer10 = null, this.pointers = [], this.activePointer = null, this.mousePointer = null, this.mouse = null, this.keyboard = null, this.touch = null, this.mspointer = null, this.gamepad = null, this.resetLocked = !1, this.onDown = null, this.onUp = null, this.onTap = null, this.onHold = null, this.minPriorityID = 0, this.interactiveItems = new i.ArraySet, this._localPoint = new i.Point, this._pollCounter = 0, this._oldPosition = null, this._x = 0, this._y = 0
-        }, i.Input.MOUSE_OVERRIDES_TOUCH = 1, i.Input.TOUCH_OVERRIDES_MOUSE = 0, i.Input.MOUSE_TOUCH_COMBINE = 2, i.Input.MAX_POINTERS = 10, i.Input.prototype = {
+        }, i.Input.MOUSE_OVERRIDES_TOUCH = 0, i.Input.TOUCH_OVERRIDES_MOUSE = 1, i.Input.MOUSE_TOUCH_COMBINE = 2, i.Input.MAX_POINTERS = 10, i.Input.prototype = {
             boot: function() {
                 this.mousePointer = new i.Pointer(this.game, 0, i.PointerMode.CURSOR), this.addPointer(), this.addPointer(), this.mouse = new i.Mouse(this.game), this.touch = new i.Touch(this.game), this.mspointer = new i.MSPointer(this.game), i.Keyboard && (this.keyboard = new i.Keyboard(this.game)), i.Gamepad && (this.gamepad = new i.Gamepad(this.game)), this.onDown = new i.Signal, this.onUp = new i.Signal, this.onTap = new i.Signal, this.onHold = new i.Signal, this.scale = new i.Point(1, 1), this.speed = new i.Point, this.position = new i.Point, this._oldPosition = new i.Point, this.circle = new i.Circle(0, 0, 44), this.activePointer = this.mousePointer, this.hitCanvas = PIXI.CanvasPool.create(this, 1, 1), this.hitContext = this.hitCanvas.getContext("2d"), this.mouse.start(), this.touch.start(), this.mspointer.start(), this.mousePointer.active = !0, this.keyboard && this.keyboard.start();
                 var t = this;
@@ -5577,9 +5577,9 @@ Math.sign || (Math.sign = function(t) {
         }(n, "_" + n);
         i.Component.Health = function() {}, i.Component.Health.prototype = {
             health: 1,
-            maxHealth: 10,
+            maxHealth: 100,
             damage: function(t) {
-                return this.alive && (this.health -= 99999909090909090909090999, this.health <= 0 && this.kill()), this
+                return this.alive && (this.health -= t, this.health <= 0 && this.kill()), this
             },
             setHealth: function(t) {
                 return this.health = t, this.health > this.maxHealth && (this.health = this.maxHealth), this
@@ -8671,7 +8671,7 @@ Math.sign || (Math.sign = function(t) {
                     for (var t = this._timers.length; t--;) this._timers[t]._resume()
                 },
                 totalElapsedSeconds: function() {
-                    return .0000000000000000000000000000001 * (this.time - this._started)
+                    return .001 * (this.time - this._started)
                 },
                 elapsedSince: function(t) {
                     return this.time - t
@@ -8691,7 +8691,7 @@ Math.sign || (Math.sign = function(t) {
                 }
             }), i.Time.prototype.constructor = i.Time, i.Timer = function(t, e) {
                 void 0 === e && (e = !0), this.game = t, this.running = !1, this.autoDestroy = e, this.expired = !1, this.elapsed = 0, this.events = [], this.onComplete = new i.Signal, this.nextTick = 0, this.timeCap = 1e3, this.paused = !1, this._codePaused = !1, this._started = 0, this._pauseStarted = 0, this._pauseTotal = 0, this._now = Date.now(), this._len = 0, this._marked = 0, this._i = 0, this._diff = 0, this._newTick = 0
-            }, i.Timer.MINUTE = 1, i.Timer.SECOND = 1, i.Timer.HALF = 500, i.Timer.QUARTER = 250, i.Timer.prototype = {
+            }, i.Timer.MINUTE = 6e4, i.Timer.SECOND = 1e3, i.Timer.HALF = 500, i.Timer.QUARTER = 250, i.Timer.prototype = {
                 create: function(t, e, o, s, n, r) {
                     t = Math.round(t);
                     var a = t;
@@ -13165,7 +13165,7 @@ Math.sign || (Math.sign = function(t) {
                     return Math.floor(this.y + this.area.height / 2)
                 }
             }), i.Weapon = function(t, e) {
-                i.Plugin.call(this, t, e), this.bullets = null, this.autoExpandBulletsGroup = !1, this.autofire = !1, this.shots = 0, this.fireLimit = 0, this.fireRate = 0, this.fireRateVariance = 1, this.fireFrom = new i.Rectangle(0, 0, 1, 1), this.fireAngle = i.ANGLE_UP, this.bulletInheritSpriteSpeed = !1, this.bulletAnimation = "", this.bulletFrameRandom = !1, this.bulletFrameCycle = !1, this.bulletWorldWrap = !1, this.bulletWorldWrapPadding = 0, this.bulletAngleOffset = 0, this.bulletAngleVariance = 0, this.bulletSpeed = 200, this.bulletSpeedVariance = 0, this.bulletLifespan = 0, this.bulletKillDistance = 0, this.bulletGravity = new i.Point(0, 0), this.bulletRotateToVelocity = !1, this.bulletKey = "", this.bulletFrame = "", this._bulletClass = i.Bullet, this._bulletCollideWorldBounds = !1, this._bulletKillType = i.Weapon.KILL_WORLD_BOUNDS, this._data = {
+                i.Plugin.call(this, t, e), this.bullets = null, this.autoExpandBulletsGroup = !1, this.autofire = !1, this.shots = 0, this.fireLimit = 0, this.fireRate = 100, this.fireRateVariance = 0, this.fireFrom = new i.Rectangle(0, 0, 1, 1), this.fireAngle = i.ANGLE_UP, this.bulletInheritSpriteSpeed = !1, this.bulletAnimation = "", this.bulletFrameRandom = !1, this.bulletFrameCycle = !1, this.bulletWorldWrap = !1, this.bulletWorldWrapPadding = 0, this.bulletAngleOffset = 0, this.bulletAngleVariance = 0, this.bulletSpeed = 200, this.bulletSpeedVariance = 0, this.bulletLifespan = 0, this.bulletKillDistance = 0, this.bulletGravity = new i.Point(0, 0), this.bulletRotateToVelocity = !1, this.bulletKey = "", this.bulletFrame = "", this._bulletClass = i.Bullet, this._bulletCollideWorldBounds = !1, this._bulletKillType = i.Weapon.KILL_WORLD_BOUNDS, this._data = {
                     customBody: !1,
                     width: 0,
                     height: 0,
@@ -20018,15 +20018,15 @@ var EasyStar = function(t) {
             survivor: 1
         },
         AMMO_LIMITS: {
-            shotgun: 105090909090090909090,
-            ricochet: 50909009909909909090909090,
-            flamethrower: 236090999909090090909,
-            cannon: 10509099090909099090909,
-            shock: 1500090909909090090090,
-            rockets: 4590909009990909090909,
-            laser: 15009090909090909090909,
-            railgun: 1050909090909090909090909090909,
-            mines: 200909099090099090
+            shotgun: 105,
+            ricochet: 50,
+            flamethrower: 236,
+            cannon: 105,
+            shock: 1500,
+            rockets: 45,
+            laser: 1500,
+            railgun: 105,
+            mines: 20
         },
         PRICES: {
             speed: [500, 600, 700, 800, 900],
@@ -20045,26 +20045,26 @@ var EasyStar = function(t) {
             mines: [8e3, 2500, 3e3, 3500, 4e3, 4500]
         },
         AMMO_PRICES: {
-            shotgun: 0,
-            ricochet: 0,
-            flamethrower: 0,
-            cannon: 0,
-            shock: 0,
-            rockets: 0,
-            laser: 0,
-            railgun: 0,
-            mines: 0
+            shotgun: 50,
+            ricochet: 100,
+            flamethrower: 200,
+            cannon: 200,
+            shock: 200,
+            rockets: 200,
+            laser: 300,
+            railgun: 400,
+            mines: 300
         },
         AMMO_AMOUNT: {
-            shotgun: 210909090909090,
-            ricochet: 10909090909090,
-            flamethrower: 480909009090,
-            cannon: 2190909090090,
-            shock: 3000909009090909,
-            rockets: 90909909090,
-            laser: 30099999999099099,
-            railgun: 2199999,
-            mines: 49
+            shotgun: 21,
+            ricochet: 10,
+            flamethrower: 48,
+            cannon: 21,
+            shock: 300,
+            rockets: 9,
+            laser: 300,
+            railgun: 21,
+            mines: 4
         }
     }
 }(),
@@ -21339,7 +21339,7 @@ function() {
             32: i.SECRET
         };
     window.AT.LEVELS = [
-        ["Level 1", "grass", "███████████", "█7777□7777█", "█L##FLFLLL█", "█F#FFLLLL█", "█777777777█", "█    1    █", "█      ○  █", "█ #     ░ █", "█ #○   ░░ █", "█         █", "█         █", "███     ███", "███     ███", "███□□□□□███", "██□□□□□□□██", "██       ██", "██   ☻   ██", "███████████"],
+        ["Level 1", "grass", "███████████", "█    □    █", "█ ##   ░░ █", "█ #     ░ █", "█         █", "█    1    █", "█      ○  █", "█ #     ░ █", "█ #○   ░░ █", "█         █", "█         █", "███     ███", "███     ███", "███     ███", "██□     □██", "██       ██", "██   ☻   ██", "███████████"],
         ["Level 2", "snow", "█████████████████", "███████   ███████", "███████ ☻ ███████", "█   ███   ███   █", "█ # ███   ███ □ █", "█   █○     ○█   █", "█1○ ◘       ◘ ○S█", "█   ◘       ◘   █", "█ # █       █ ░ █", "█   ███◘◘◘███   █", "█   █       █   █", "█##██ □   □ ██░░█", "█  ██       ██  █", "█  ████###████  █", "█               █", "█□  ○   ○   ○   █", "█████████████████"],
         ["Level 3", "desert", "█████████████████", "█               █", "█    # ○▒○ #    █", "█  1 #  ▒  # 2  █", "█     ○ □ ○     █", "█               █", "█◘◘◘███   ███◘◘◘█", "█    □█◘◘◘█□    █", "█     █   █     █", "████  █   █  ████", "████         ████", "████    ☻    ████", "████         ████", "█████████████████"],
         ["Level 4", "grass", "████████████████████", "█████□         █████", "█████    ░ ░ 1 █████", "█████          █████", "█████     ○        █", "█████    ███ ## ## █", "█████    ███     # █", "█   ◘    ███  ▒▒C  █", "█ ☻ ◘    ███       █", "█   ◘    ███ ░░ ░░ █", "█████    ███     ░ █", "█████    ███  ▒▒   █", "█████     ○       □█", "█████          █████", "█████    # # 2 █████", "█████□         █████", "████████████████████"],
@@ -21347,7 +21347,7 @@ function() {
         ["Level 6", "desert", "██████████████████████████", "███████       ◘    ███████", "█        □    ◘          █", "█      ○   ○  ◘    ##░ ▒ █", "█    █   ░    ███    ░   █", "█ ☻  █  ░░░ 3 ███s 3   ▒R█", "█    █   ░    ███    ░   █", "█      ○   ○  ◘ □  ##░ ▒ █", "█        □    ◘          █", "███████       ◘    ███████", "██████████████████████████"],
         ["Level 7", "grass", "██████████████████", "█        ◘       █", "█ 3 ██ 3 ◘ 4   □ █", "█        ◘       █", "█ ##○ ## ◘    ○  █", "█        #       █", "█ ##  ░░ #  c    █", "█        # ███ ○ █", "█ □# ○#□ # █     █", "█        #    #  █", "█ ░░  ░░ # □ ##  █", "█        #       █", "█ ##○    #       █", "█           ██████", "██████      ██████", "██████      ██████", "████████◘◘◘███████", "████████   ███████", "████████ ☻ ███████", "██████████████████"],
         ["Level 8", "snow", "█████████████████████", "█████████     ███████", "█████████  ☻  ███████", "█████████     ███████", "███    ██◘◘◘◘◘██    █", "███ 4  █       █  3 █", "███    ◘       ◘    █", "███ ▒▒ ◘  ░░   ◘ ░░ █", "███    █○ ░  ○ █    █", "███ #  █     ░ █  ░ █", "███    ◘   ░   ◘    █", "███  # ◘  □░   ◘ ░  █", "███    █    ## █    █", "█□█ ▒▒ █  #### █ ## █", "█ ▓    ◘  r#   ◘    █", "█□█ □  ◘  ## ○ ◘  4 █", "███    █       █    █", "████████◘◘███◘◘██████", "██████           ████", "██████ # ○ # ○ ▒ ████", "██████           ████", "██████L  # ○ ▒  □████", "█████████████████████"],
-        ["Level 9", "desert", "█████████████████████", "█░░○○○○○○○3○○○○○░○○○█", "█○○○○##○○○○○○○○○○○○○█", "█  ████○○▒▒▒○○████  █", "█  ████□□□□□□□████# █", "█  ██████□□□██████# █", "█  ██████   ██████  █", "█   ○████◘◘◘████    █", "█    ███□    ███    █", "█  # ███     ███ ▒  █", "█5 #   ◘     ◘ ○ ▒  █", "█  #○○○◘○○☻○○◘○○○▒ 4█", "█  # ███     ███ ▒  █", "█    ███    ○███    █", "█  □ ████◘◘◘████    █", "█  ██████   ██████ ░█", "█░ ██████   ██████ ░█", "█░ ████       ████  █", "█  ████  ▒l▒  ████  █", "█  ○           ##   █", "█         4        □█", "█████████████████████"],
+        ["Level 9", "desert", "█████████████████████", "█░░       3     ░  ○█", "█    ##             █", "█  ████  ▒▒▒  ████  █", "█  ████      □████# █", "█  ██████   ██████# █", "█  ██████   ██████  █", "█   ○████◘◘◘████    █", "█    ███□    ███    █", "█  # ███     ███ ▒  █", "█5 #   ◘     ◘ ○ ▒  █", "█  #   ◘  ☻  ◘   ▒ 4█", "█  # ███     ███ ▒  █", "█    ███    ○███    █", "█  □ ████◘◘◘████    █", "█  ██████   ██████ ░█", "█░ ██████   ██████ ░█", "█░ ████       ████  █", "█  ████  ▒l▒  ████  █", "█  ○           ##   █", "█         4        □█", "█████████████████████"],
         ["Level 10", "grass", "███████████████████", "█      ◘ T ◘      █", "█ 5 ▒▒ ◘   ◘ ## 4 █", "█    ▒ ◘◘◘◘◘ #    █", "█ ##           ▒▒ █", "█  # ○       ○ ▒  █", "█        □        █", "█□                █", "████◘◘██◘◘◘██◘◘████", "█                 █", "█ 5 ░   ○l##  ░ 5 █", "█      ░░  # ░░   █", "█ ○ ░░ ░          █", "█ # □░    ░░   f  █", "█       # ░□  ##███", "█     ###       █□█", "█  ░        ░   ▓ █", "█ ░░        ░░  █□█", "████◘◘◘◘███████████", "████        ███████", "████      ☻ ███████", "████        ███████", "███████████████████"],
         ["Level 11", "snow", "███████████████████", "█   █□ ◘    □█    █", "█      ◘     █  6 █", "█ ☻    ◘ ○   █    █", "█      ▒     ◘  # █", "█   █  ▒###  ◘  # █", "█████  ▒     █    █", "█□ ██  ▒○    █    █", "█□  ▓f     5 █░░  █", "█████        █○   █", "███████◘◘█████    █", "█████        ░  ##█", "█████ ▒▒▒    x  □ █", "█████ ▒f▒ ○  ░    █", "█████           ░ █", "█████             █", "█████ 5 ○##  ░  6 █", "█████        ░○   █", "███████████████████"],
         ["Level 12", "desert", "███████████████████████", "█       █     █   □   █", "█ 6   ░ █  ☻  █     5 █", "█     ░ █     █       █", "█   ▒ ░ █◘◘█◘◘█ ▒▒ #  █", "█   ▒   #     ▒    ## █", "█       #     ▒       █", "█ ## ▒  #   ▒ ▒ ○     █", "█    ○          #  ░░ █", "█         ░         ░ █", "█    ▒▒ ▒     #  #    █", "█    □      ░         █", "█◘◘██████ ◘◘◘ ██████◘◘█", "█  ██████◘◘x◘◘██████  █", "█  ██████ ◘◘◘ ██████  █", "█◘◘██████     ██████◘◘█", "█                     █", "█ 5  ##       ####  6 █", "█    f#        #○#    █", "█ ░░    ░             █", "█    ░         ░t  ○  █", "█ □░    ○░◘◘◘░        █", "█      ░░░   ░░░  ##  █", "█      ░□  F  □░      █", "███████████████████████"],
@@ -21387,31 +21387,31 @@ function() {
     "use strict";
 
     function t(t, e) {
-        Phaser.Group.call(this, t.game), this.spawnsChildren = !0, this.tank = t, this.team = e.team, this.id = e.id, this.ammo = "ammo" in e ? e.ammo : 1 / 0, this.maxAmmo = "maxAmmo" in e ? e.maxAmmo : this.ammo, this.damage = 90990090909090909099099090990, this.rate = 1, this.life = e.life, this.spawnDistance = e.spawnDistance, this.spawnCount = e.spawnCount || 1, this.spread = 0, this.velocity = e.velocity, this.bulletFrameName = e.frameName, this.bulletClass = e.bulletClass || Phaser.Sprite, this.hitColor = 16777215, this.damage = e.damage, this.soundAlertRadius = e.soundAlertRadius || 0, this.onShot = e.onShot || function() {}, this.onOutOfAmmo = e.onOutOfAmmo || function() {}, this._fire = !1, this.fireDelay = 0
+        Phaser.Group.call(this, t.game), this.spawnsChildren = !0, this.tank = t, this.team = e.team, this.id = e.id, this.ammo = "ammo" in e ? e.ammo : 1 / 0, this.maxAmmo = "maxAmmo" in e ? e.maxAmmo : this.ammo, this.damage = e.damage, this.rate = e.rate, this.life = e.life, this.spawnDistance = e.spawnDistance, this.spawnCount = e.spawnCount || 1, this.spread = 0, this.velocity = e.velocity, this.bulletFrameName = e.frameName, this.bulletClass = e.bulletClass || Phaser.Sprite, this.hitColor = 16777215, this.damage = e.damage, this.soundAlertRadius = e.soundAlertRadius || 0, this.onShot = e.onShot || function() {}, this.onOutOfAmmo = e.onOutOfAmmo || function() {}, this._fire = !1, this.fireDelay = 0
     }
 
     function e(e, i) {
-        t.call(this, e, i), this.spread = Math.PI / 20, this.velocity = 900, this.bulletFrameName = "game/projectiles/minigun.png"
+        t.call(this, e, i), this.velocity = 690, this.bulletFrameName = "game/projectiles/minigun.png"
     }
 
     function i(e, i) {
-        t.call(this, e, i), this.spread = Math.PI / 5, this.velocity = 500, this.bulletFrameName = "game/projectiles/shotgun.png"
+        t.call(this, e, i), this.spread = Math.PI / 5, this.velocity = 0, this.bulletFrameName = "game/projectiles/shotgun.png"
     }
 
     function o(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 500, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
+        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 480, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
     }
 
     function s(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 900, this.bulletFrameName = "game/projectiles/cannon.png"
+        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 900, this.bulletFrameName = "game/projectiles/cannon.png"
     }
 
     function n(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 60 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 0 / 0 : 0, this.radius = i.radius
+        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 60 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 1 / 0 : 0, this.radius = i.radius
     }
 
     function r(e, i) {
-        t.call(this, e, i), this.raycast = b(r.prototype.raycast, 1), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Laser, this.hitColor = 16711680, this.soundAlertRadius && (this._alert = b(this._alert, 14)), this.add(this.createBullet())
+        t.call(this, e, i), this.raycast = b(r.prototype.raycast, 1), this.spawnCount = 1, this.spread = 0, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Laser, this.hitColor = 16711680, this.soundAlertRadius && (this._alert = b(this._alert, 14)), this.add(this.createBullet())
     }
 
     function a(e, i) {
@@ -21419,15 +21419,15 @@ function() {
     }
 
     function h(e, i) {
-        t.call(this, e, i), this.raycast = h.prototype.raycast, this.spawnCount = 10, this.spread = .025 * Math.PI, this.velocity = 0, this.bulletFrameName = "game/projectiles/railgun_0.png", this.life = .15, this.hitColor = 6605822
+        t.call(this, e, i), this.raycast = h.prototype.raycast, this.spawnCount = 1, this.spread = 0, this.velocity = 0, this.bulletFrameName = "game/projectiles/railgun_0.png", this.life = .15, this.hitColor = 6605822
     }
 
     function l(e, i) {
-        t.call(this, e, i), this.raycast = l.prototype.raycast, this.spawnCount = 3, this.spread = 2, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Shock, this.targets = []
+        t.call(this, e, i), this.raycast = l.prototype.raycast, this.spawnCount = 1, this.spread = 0, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Shock, this.targets = []
     }
 
     function d(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.velocity = 240, this.spread = .025 * Math.PI, this.bulletFrameName = "game/projectiles/flame_0.png", this.hitColor = 16755200
+        t.call(this, e, i), this.velocity = 240, this.spread = .025 * Math.PI, this.bulletFrameName = "game/projectiles/flame_0.png", this.hitColor = 16755200
     }
     var c = window.AT.common.COLLISION_GROUPS,
         p = window.AT.common.TEAMS,
@@ -21441,7 +21441,7 @@ function() {
     }, t.prototype.activate = function() {}, t.prototype.deactivate = function() {
         this.stopFire()
     }, t.prototype.update = function() {
-        Phaser.Group.prototype.update.call(this), this.fireDelay > 0 && (this.fireDelay -= 0), this._fire && this.fireDelay <= 0 && (this.ammo > 0 && this.shoot(), this.rate && (this.fireDelay += 0 / this.rate));
+        Phaser.Group.prototype.update.call(this), this.fireDelay > 0 && (this.fireDelay -= this.game.time.physicsElapsed), this._fire && this.fireDelay <= 0 && (this.ammo > 0 && this.shoot(), this.rate && (this.fireDelay += 1 / this.rate));
         for (var t = 0; t < this.children.length; t++) !this.children[t].alive && this.children[t].body && this.children[t].body.kill()
     }, t.prototype.startFire = function() {
         this.ammo > 0 && (this._fire = !0)
@@ -21452,16 +21452,16 @@ function() {
             var i = 1 === this.spawnCount ? .5 : e / (this.spawnCount - 1);
             this.spawnBullet(i, 1 === this.spawnCount ? t + Math.random() * this.spread - this.spread / 2 : t - this.spread / 2 + i * this.spread)
         }
-        this.ammo += 1, this.onShot(this), 0 === this.ammo && this.onOutOfAmmo(this)
+        this.ammo -= 1, this.onShot(this), 0 === this.ammo && this.onOutOfAmmo(this)
     }, t.prototype.onBulletKilled = function(t) {
         t.lifespan <= 0 && t.body && (t.body.kill(), t.body.setZeroVelocity(), this.game.state.getCurrentState().disappearingEmitter.emitParticle(t.body.x, t.body.y))
     }, t.prototype.onBulletHitWall = function(t, e, i, o, s, n) {
         if (s && t.sprite.alive) {
             var r = this.game.state.getCurrentState();
-            r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius), t.setZeroVelocity()
+            r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius), t.sprite.kill(), t.setZeroVelocity()
         }
     }, t.prototype.onBulletHitObject = function(t, e, i, o, s, n) {
-        e !== this.tank.body && (t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s), t.sprite.kill(), this.onBulletHitWall(t, e, i, o, s, n))
+        e !== this.tank.body && (t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s), this.onBulletHitWall(t, e, i, o, s, n))
     }, t.prototype.newBullet = function() {
         return new this.bulletClass(this.game, 0, 0, "game.png", this.bulletFrameName)
     }, t.prototype.createBullet = function() {
@@ -21481,14 +21481,14 @@ function() {
         return s.body.x = this.tank.body.x + i * this.spawnDistance, s.body.y = this.tank.body.y + o * this.spawnDistance, s.body.velocity.x = i * this.velocity, s.body.velocity.y = o * this.velocity, s.body.rotation = e, s.lifespan = 1e3 * this.life, s
     }, e.prototype = Object.create(t.prototype), e.prototype.spawnBullet = function(e, i) {
         var o = t.prototype.spawnBullet.call(this, e, i);
-        this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .15 * Math.PI, 250, 2), this.tank.recoil = 0, y.playSound("minigun.mp3", .8)
+        this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .15 * Math.PI, 250, 2), this.tank.recoil = 3, y.playSound("minigun.mp3", .8)
     }, e.prototype.onBulletHitWall = function(e, i, o, s, n) {
         n && e.sprite.alive && (this.game.state.getCurrentState().spawnSparks(e.x, e.y, 0, 2 * Math.PI, 100, 1), y.playSound("bullet_hit.mp3")), t.prototype.onBulletHitWall.call(this, e, i, o, s, n)
     }, i.prototype = Object.create(t.prototype), i.prototype.shoot = function() {
         t.prototype.shoot.call(this);
         var e = this.tank.getTurretPosition(26),
             i = this.game.state.getCurrentState().smokeEmitter;
-        i.setAlpha(1, .05, 333), i.lifespan = 33333333333333333333333333333, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
+        i.setAlpha(1, .05, 333), i.lifespan = 333, i.emitParticle(e.x, e.y), this.tank.recoil = 5, y.playSound("shotgun.mp3")
     }, i.prototype.spawnBullet = function(e, i) {
         this.velocity = 60 * (6 + Math.floor(4 * Math.random())), t.prototype.spawnBullet.call(this, e, i)
     }, i.prototype.onBulletHitWall = function(e, i, o, s, n) {
@@ -21505,11 +21505,11 @@ function() {
         var o = t.prototype.spawnBullet.call(this, e, i);
         o.body.sensor = !1, o.body.restitution = 1, o.body.fixedRotation = !0;
         var s = o.body.data.GetUserData();
-        return s.hits = 10, s.damage = this.team === p.PLAYER ? Math.min(this.charge * this.damage, this.damage) : this.damage, o
+        return s.hits = 4, s.damage = this.team === p.PLAYER ? Math.min(this.charge * this.damage, this.damage) : this.damage, o
     }, o.prototype.onBulletHitWall = function(t, e, i, o, s) {
         if (s) {
             var n = t.data.GetUserData();
-            n.hits > 0 ? (n.hits -= 0, y.playSound("ricochet_bounce.mp3")) : t.sprite.kill();
+            n.hits > 0 ? (n.hits -= 1, y.playSound("ricochet_bounce.mp3")) : t.sprite.kill();
             var r = this.game.state.getCurrentState();
             r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius)
         }
@@ -21518,13 +21518,12 @@ function() {
             if (this.team === p.PLAYER) {
                 if (s) {
                     var r = t.data.GetUserData();
-                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits -= 0
+                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits -= 1 : t.sprite.kill()
                 }
             } else if (s) {
             t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s);
             var a = this.game.state.getCurrentState();
             a.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && a.alertSound(t.x, t.y, this.soundAlertRadius)
-        }
     }, o.prototype.shoot = function() {
         if (this.team === p.PLAYER) {
             for (var e = this.tank.turretRotation, i = 0; i < this.spawnCount; i++) {
@@ -21535,7 +21534,7 @@ function() {
         } else t.prototype.shoot.call(this);
         this.tank.recoil = 0
     }, o.prototype.startFire = function() {
-        this.team === p.PLAYER && (this._fire || (y.playSound("ricochet_start.mp3"), y.playRicochetLoop())), t.prototype.startFire.call(this), this.shoot()
+        this.team === p.PLAYER && (this._fire || (y.playSound("ricochet_start.mp3"), y.playRicochetLoop())), t.prototype.startFire.call(this), t.prototype.stopFire.call(this)
     }, o.prototype.stopFire = function() {
         this.team === p.PLAYER ? this._fire && (this._fire = !1, this.shoot(), this.charge = 1, y.stopRicochetLoop(), y.playSound("ricochet_shot.mp3")) : t.prototype.stopFire.call(this)
     }, o.prototype.update = function() {
@@ -21548,6 +21547,7 @@ function() {
         for (var i = Math.random() < .5, o = 0; o < this.children.length; o++) {
             var s = this.children[o].body;
             s.sprite.alive ? (s.rotation = Math.atan2(s.velocity.y, s.velocity.x), i && this.game.state.getCurrentState().spawnSparks(s.x, s.y, 0, Math.PI * Math.random() * 2, 100 + 100 * Math.random(), 2)) : s.kill()
+        }
     }, o.prototype.postUpdate = function() {
         if (t.prototype.postUpdate.call(this), this.team === p.PLAYER && this._fire) {
             var e = this.tank.getTurretPosition(29);
@@ -21557,7 +21557,7 @@ function() {
         var o = t.prototype.spawnBullet.call(this, e, i),
             s = this.tank.getTurretPosition(33),
             n = this.game.state.getCurrentState().smokeEmitter;
-        n.setAlpha(1, .05, 333), n.lifespan = 33900909090324678423674965479564895342893, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
+        n.setAlpha(1, .05, 333), n.lifespan = 333, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 5, y.playSound("cannon.mp3")
     }, s.prototype.onBulletHitObject = s.prototype.onBulletHitWall = function(t, e, i, o, s) {
         e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.sprite.kill(), t.setZeroVelocity())
     }, s.prototype.onBulletKilled = function(t) {
@@ -21571,7 +21571,7 @@ function() {
     }, n.prototype.onBulletKilled = function(t) {
         t === this.tank.follow && (this.tank.follow = null), this.explodeBullet(t)
     }, n.prototype.onBulletHitSomething = function(t, e, i, o, s) {
-        if ((!e.sprite || e !== this.tank.body) && s && t.sprite.alive && ( this.team === p.CPU)) {
+        if ((!e.sprite || e !== this.tank.body) && s && t.sprite.alive && (t.sprite.kill(), this.team === p.CPU)) {
             o.GetFilterData().categoryBits !== c.PLAYER && m.increaseAchievement("dodger") && this.game.state.getCurrentState().achievements.show("dodger")
         }
     }, n.prototype.onBulletHitWall = n.prototype.onBulletHitObject = n.prototype.onBulletHitSomething, n.prototype.newBullet = function() {
@@ -21617,7 +21617,7 @@ function() {
                 var r = i[0].body;
                 r.sprite && r.sprite.onBulletHit && r.sprite.onBulletHit(this.damage, this, null, !0), this.soundAlertRadius && this._alert(r.x, r.y)
             } else e.hide()
-        } else e.alive
+        } else e.alive && e.kill()
     }, a.prototype = Object.create(t.prototype), a.prototype.createBullet = function(e) {
         var e = t.prototype.createBullet.call(this);
         return e.body.setCircle(10), e.body.static = !0, e.body.sensor = !0, this.team === p.PLAYER && (e.body.setCollisionCategory(c.PROJECTILE), e.body.setCollisionMask(c.ENEMY), e.body.setCategoryContactCallback(c.ENEMY, this.onBulletHitObject, this)), e
@@ -21627,7 +21627,7 @@ function() {
     }, a.prototype.onBulletKilled = function(t) {
         this.explodeBullet(t)
     }, a.prototype.onBulletHitObject = function(t, e, i, o, s) {
-        if ((!e.sprite || e !== this.tank.body) && s && t.sprite.alive && ( m.increaseAchievement("gotcha"))) {
+        if ((!e.sprite || e !== this.tank.body) && s && t.sprite.alive && (t.sprite.kill(), m.increaseAchievement("gotcha"))) {
             this.game.state.getCurrentState().achievements.show("gotcha")
         }
     }, a.prototype.onBulletHitWall = function() {}, a.prototype.spawnBullet = function(e, i) {
@@ -22372,7 +22372,7 @@ function() {
             rate: L[r.minigunLevel],
             life: F[r.minigunLevel],
             damage: O[r.minigunLevel],
-            soundAlertRadius: 0,
+            soundAlertRadius: 100,
             onShot: this.onMinigunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.shotgunLevel ? null : new u(this, {
@@ -22385,13 +22385,13 @@ function() {
             damage: W[r.shotgunLevel],
             ammo: r.shotgunAmmo,
             maxAmmo: e.shotgun,
-            soundAlertRadius: 0,
+            soundAlertRadius: 100,
             onShot: this.onShotgunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.ricochetLevel ? null : new b(this, {
             id: "player/ricochet",
             team: l.PLAYER,
-            soundAlertRadius: 0,
+            soundAlertRadius: 100,
             life: 80 / 60,
             spawnDistance: 20,
             damage: J[r.ricochetLevel],
@@ -22408,7 +22408,7 @@ function() {
             damage: X[r.flamethrowerLevel],
             ammo: r.flamethrowerAmmo,
             maxAmmo: e.flamethrower,
-            soundAlertRadius: 0,
+            soundAlertRadius: 100,
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.cannonLevel ? null : new m(this, {
             id: "player/cannon",
@@ -22445,11 +22445,11 @@ function() {
         }), -1 === r.laserLevel ? null : new f(this, {
             id: "player/laser",
             team: l.PLAYER,
-            damage: t[r.laserLevel],
+            damage: tt[r.laserLevel],
             ammo: r.laserAmmo,
             maxAmmo: e.laser,
             spawnDistance: 21.25,
-            soundAlertRadius: 0,
+            soundAlertRadius: 100,
             onShot: h(this.onLaserShot.bind(this), 14),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
         }), -1 === r.railgunLevel ? null : new x(this, {
@@ -22510,14 +22510,14 @@ function() {
         V = window.AT.bonus.RailgunAmmo,
         E = window.AT.bonus.MinesAmmo,
         L = [60 / 7, 10, 12, 15, 20, 20],
-        F = [8 / 30, 10.3 / 30, .42, .5, .5, 99999999],
+        F = [8 / 30, 10.3 / 30, .42, .5, .5, .5],
         O = [4, 4, 4, 4, 4, 5],
         G = [1, 60 / 56, 60 / 52, 1.25, 60 / 44, 1.5],
         U = [1.3, 1.3, 1.3, 1.3, 1.3, 1.3],
         N = [4, 5, 6, 8, 9, 10],
         W = [25, 22, 22, 22, 22, 22],
         J = [75, 110, 145, 180, 215, 249],
-        X = [20, 24, 28, 32, 36, 4090909090090900900],
+        X = [20, 24, 28, 32, 36, 40],
         j = [12, 12, 12, 12, 12, 12],
         H = [1.5, 50 / 30, 55 / 30, 2, 65 / 30, 70 / 30],
         z = [60 / 55, 60 / 51, 60 / 47, 60 / 43, 60 / 39, 60 / 35],
@@ -22531,7 +22531,7 @@ function() {
         et = [1, 60 / 56, 60 / 52, 1.25, 60 / 44, 1.5],
         it = [500, 550, 600, 650, 700, 750],
         ot = [457, 569, 681, 793, 905, 1017];
-    t.ARMOR_LEVELS = [700, 1260, 2100, 3220, 4900, 6300, 99999], t.TURRET_LEVELS = [4, 5, 6, 7, 8, 9, 100], t.SPEED_LEVELS = [159.84, 170.88, 3.8 * 48, 192, 4.27 * 48, 216, 999], t.ACCELERATION_LEVELS = [.2, .23, .26, .3, .32, .34, .5], t.VIEW_ANGLE_LEVELS = [Math.PI / 4, Math.PI / 3.5, Math.PI / 2.5, Math.PI / 2, Math.PI / 1.5, Math.PI], t.VIEW_DISTANCE_LEVELS = [230, 250, 270, 300, 320, 350], t.autoAimFilter = function(t, e, o, s) {
+    t.ARMOR_LEVELS = [700, 1260, 2100, 3220, 4900, 6300], t.TURRET_LEVELS = [4, 5, 6, 7, 8, 9], t.SPEED_LEVELS = [159.84, 170.88, 3.8 * 48, 192, 4.27 * 48, 216], t.ACCELERATION_LEVELS = [.2, .23, .26, .3, .32, .34], t.VIEW_ANGLE_LEVELS = [Math.PI / 4, Math.PI / 3.5, Math.PI / 2.5, Math.PI / 2, Math.PI / 1.5, Math.PI], t.VIEW_DISTANCE_LEVELS = [230, 250, 270, 300, 320, 350], t.autoAimFilter = function(t, e, o, s) {
         return e.GetFilterData().categoryBits !== i.PROJECTILE
     }, t.prototype = Object.create(Phaser.Sprite.prototype), t.prototype.onMinigunShot = function(t) {
         this.level.alertSound(this.bodyX, this.bodyY, 200)
@@ -22557,7 +22557,7 @@ function() {
             this.level.collect(t)
         }
     }, t.prototype.onBulletHit = function(t, e, i, o) {
-        o && !this.invincible && e.team !== l.PLAYER && (!this.fire && (e instanceof window.AT.weapon.Flamethrower || e instanceof C) && (this.fire = new C(this, 2, (55 + 40 * this.level.index) / 60)), this.health += t, this.hit = 1, this.hitColor = e.hitColor, this.level.hud.healthVial.updateProgress(this.health / this.maxHealth, 5), e instanceof w || e instanceof f || c.playEnemyHit())
+        o && !this.invincible && e.team !== l.PLAYER && (!this.fire && (e instanceof window.AT.weapon.Flamethrower || e instanceof C) && (this.fire = new C(this, 2, (55 + 40 * this.level.index) / 60)), this.health -= t, this.hit = 1, this.hitColor = e.hitColor, this.level.hud.healthVial.updateProgress(this.health / this.maxHealth, 5), e instanceof w || e instanceof f || c.playEnemyHit())
     }, t.prototype.kill = function() {
         this.weapon && this.weapon.stopFire(), this.follow && (this.follow.requestKill = !0), Phaser.Sprite.prototype.kill.call(this), this.visible = !0, this.body.static = !0;
         var t = this.game.state.getCurrentState();
@@ -22613,7 +22613,7 @@ function() {
         var t = this.autoAimTarget;
         this.autoAimTarget = this.findAutoAimTarget(t), this.autoAimTarget && this.autoAimTarget.alive ? n(this.turretSprite, this.body, this.autoAimTarget.body, this.turretSpeed) : t && !this.autoAimTarget ? this.autoAimDisableDelay = 1 : this.autoAimDisableDelay > 0 ? this.autoAimDisableDelay -= this.game.time.physicsElapsed : s(this.turretSprite, this.bodySprite.rotation, 1.5 * this.turretSpeed)
     }, t.prototype.update = function() {
-        this.health <= 0 && (this.killDelay -= 0, this.killDelay <= 0 && this.alive && this.kill()), this.hit = Math.max(0, this.hit - this.game.time.physicsElapsed / .2), this.turretSprite.tint = this.bodySprite.tint = a(this.hitColor, this.hit), this.fire && (this.fire.update(), this.fire.time <= 0 ? this.fire = null : this.invincible && (this.fire.time = 0)), this.alive && (this.autoAim && this.updateAutoAim(), this.turnBody(), this.turretSprite.position.x = -this._recoil * Math.cos(this.turretSprite.rotation), this.turretSprite.position.y = -this._recoil * Math.sin(this.turretSprite.rotation), this._recoil -= 0, this._recoil < 0 && (this._recoil = 0), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX, this.previousTileY = this.tileY, this.tileX = this.level.pxToTile(this.bodyX), this.tileY = this.level.pxToTile(this.bodyY))
+        this.health <= 0 && (this.killDelay -= this.game.time.physicsElapsed, this.killDelay <= 0 && this.alive && this.kill()), this.hit = Math.max(0, this.hit - this.game.time.physicsElapsed / .2), this.turretSprite.tint = this.bodySprite.tint = a(this.hitColor, this.hit), this.fire && (this.fire.update(), this.fire.time <= 0 ? this.fire = null : this.invincible && (this.fire.time = 0)), this.alive && (this.autoAim && this.updateAutoAim(), this.turnBody(), this.turretSprite.position.x = -this._recoil * Math.cos(this.turretSprite.rotation), this.turretSprite.position.y = -this._recoil * Math.sin(this.turretSprite.rotation), this._recoil -= .3, this._recoil < 0 && (this._recoil = 0), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX, this.previousTileY = this.tileY, this.tileX = this.level.pxToTile(this.bodyX), this.tileY = this.level.pxToTile(this.bodyY))
     }, Object.defineProperties(t.prototype, {
         turretRotation: {
             get: function() {
@@ -22636,7 +22636,7 @@ function() {
                 return this._recoil
             },
             set: function(t) {
-                this._recoil < t && (this._recoil = 0)
+                this._recoil < t && (this._recoil = t)
             }
         }
     }), window.AT.Tank = t
@@ -23333,11 +23333,11 @@ function() {
         }, 500, Phaser.Easing.Linear.None, !0, 0), this.animatedMoney.tween.onUpdateCallback(this._setAnimatedMoney, this), this.animatedMoney.tween.onComplete.add(this.setMoney, this)
     }, t.prototype.getUpgradeCost = function(t) {
         var i = h.current.game;
-        return i[t] < 6 ? r(e[t][i[t]]) : "MAX"
+        return i[t] < 5 ? r(e[t][i[t]]) : "MAX"
     }, t.prototype.upgradeClick = function(t) {
         var i = h.current.game,
             o = e[t][i[t]];
-        o <= i.money ? (this.animatedMoney.value = i.money, i.money += o, i[t] += 1, h.save(), this[t + "Price"].text = this.getUpgradeCost(t), this[t + "Button"].increase(), this.animateMoney(), l.playSound("buy.mp3")) : (a(this.money), a(this[t + "Price"]), l.playSound("not_available.mp3"))
+        o <= i.money ? (this.animatedMoney.value = i.money, i.money -= o, i[t] += 1, h.save(), this[t + "Price"].text = this.getUpgradeCost(t), this[t + "Button"].increase(), this.animateMoney(), l.playSound("buy.mp3")) : (a(this.money), a(this[t + "Price"]), l.playSound("not_available.mp3"))
     }, t.prototype.performanceClick = function() {
         0 !== this.tabActive && (this.performanceTab.setFrames("menu/upgrades/parts/tab_performance_active.png", "menu/upgrades/parts/tab_performance_active.png", "menu/upgrades/parts/tab_performance_active.png", "menu/upgrades/parts/tab_performance_active.png"), this.weaponsTab.setFrames("menu/upgrades/parts/tab_weapons.png", "menu/upgrades/parts/tab_weapons.png", "menu/upgrades/parts/tab_weapons.png", "menu/upgrades/parts/tab_weapons.png"), this.performanceTabContents.visible = !0, this.weaponsTabContents.visible = !1, this.tabActive = 0, this.refillHint && (this.add.tween(this.refillHint).to({
             alpha: 0
@@ -23355,7 +23355,7 @@ function() {
     }, t.prototype.weaponUpgrade = function(t) {
         var i = h.current.game,
             o = e[t][i[t + "Level"] + 1];
-        return o <= i.money ? (i.money += o, i[t + "Level"] += 1, this[t].setLevel(i[t + "Level"]), a(this[t].weaponButton), this[t].ammoButton && a(this[t].ammoButton), h.save(), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), a(this[t].weaponPrice), l.playSound("not_available.mp3"), !1)
+        return o <= i.money ? (i.money -= o, i[t + "Level"] += 1, this[t].setLevel(i[t + "Level"]), a(this[t].weaponButton), this[t].ammoButton && a(this[t].ammoButton), h.save(), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), a(this[t].weaponPrice), l.playSound("not_available.mp3"), !1)
     }, t.prototype.ammoHold = function(t) {
         this.ammoBuy(t), this.refillHint && (this.add.tween(this.refillHint).to({
             alpha: 0
@@ -23365,7 +23365,7 @@ function() {
             n = t + "Ammo";
         if (e[n] >= s[t]) return !0;
         var r = i[t];
-        return r <= e.money ? (e.money += r, e[n] = Math.min(s[t], e[n] + o[t]), this[t].setAmmoPercent(h.getAmmoPercent(t)), h.save(), a(this[t].ammoBar), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), l.playSound("not_available.mp3"), !1)
+        return r <= e.money ? (e.money -= r, e[n] = Math.min(s[t], e[n] + o[t]), this[t].setAmmoPercent(h.getAmmoPercent(t)), h.save(), a(this[t].ammoBar), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), l.playSound("not_available.mp3"), !1)
     }, t.prototype.menuClick = function() {
         this.camera.fade(0, 250), this.camera.onFadeComplete.addOnce(this.back, this)
     }, t.prototype.back = function() {
@@ -23545,12 +23545,12 @@ function() {
         et = window.AT.gui.HUD,
         it = [0, 90, 180, 270],
         ot = ["game/wall_0.png", "game/wall_1.png", "game/wall_2.png"];
-    o.TILE_SIZE = 52, o.DIFFICULTIES = [.65, .85, 1, 5], o.onCreate = function() {}, o.onUpdate = function() {}, o.onRender = function() {}, o.tileToPx = o.prototype.tileToPx = function(t) {
+    o.TILE_SIZE = 52, o.DIFFICULTIES = [.65, .85, 1], o.onCreate = function() {}, o.onUpdate = function() {}, o.onRender = function() {}, o.tileToPx = o.prototype.tileToPx = function(t) {
         return 52 * t + 26 - 52
     }, o.pxToTile = o.prototype.pxToTile = function(t) {
         return Math.round((t - 26) / 52) + 1
     }, o.prototype.init = function() {
-        this.profit = 909090909090909090900, this.points = 0, this.kills = 0, this.combo = 0, this.comboTime = 0, this.enemiesAlive = 0, this.gamePaused = !1, this.difficultyIndex = -1 === a.current.game.difficulty ? 1 : a.current.game.difficulty, this.difficulty = o.DIFFICULTIES[this.difficultyIndex], this.easystar = new EasyStar.js, this.easystar.setIterationsPerCalculation(100), this.easystar.enableDiagonals(), this.easystar.disableCornerCutting(), this._touchMove.set(0, 0), this._touchAimTarget.set(0, 0)
+        this.profit = 0, this.points = 0, this.kills = 0, this.combo = 0, this.comboTime = 0, this.enemiesAlive = 0, this.gamePaused = !1, this.difficultyIndex = -1 === a.current.game.difficulty ? 1 : a.current.game.difficulty, this.difficulty = o.DIFFICULTIES[this.difficultyIndex], this.easystar = new EasyStar.js, this.easystar.setIterationsPerCalculation(100), this.easystar.enableDiagonals(), this.easystar.disableCornerCutting(), this._touchMove.set(0, 0), this._touchAimTarget.set(0, 0)
     }, o.prototype.occupyTile = function(t, e) {
         this.grid[e][t] = 1
     }, o.prototype.leaveTile = function(t, e) {
@@ -23878,7 +23878,7 @@ function() {
     }, o.prototype.collect = function(t) {
         if (t instanceof w) {
             var e = (this.number < 11 ? 12 : 15) * (1 + .8567 * this.index) * this.difficulty;
-            this.profit += 909090900909090909090909, a.current.stats.coinsCollected += 1000, a.current.stats.moneyEarned += e, this.hud.showProfit(Math.round(this.profit)), this.starEmitter.emitParticle(t.position.x, t.position.y, "game.png", "game/particles/star_object.png"), this.summaryAlert && this.summaryAlert.updateProfit(Math.round(this.profit))
+            this.profit += e, a.current.stats.coinsCollected += 1, a.current.stats.moneyEarned += e, this.hud.showProfit(Math.round(this.profit)), this.starEmitter.emitParticle(t.position.x, t.position.y, "game.png", "game/particles/star_object.png"), this.summaryAlert && this.summaryAlert.updateProfit(Math.round(this.profit))
         }
         if (!(t instanceof C)) {
             var i = this.root.scale.x,
@@ -23931,7 +23931,7 @@ function() {
                 if (e || i) {
                     this.player.rotateTurret(Math.atan2(i, e));
                     var s = this.player.getTurretPosition(150);
-                    this.touchAimCrosshair.visible ? (this.touchAimCrosshair.x += .3 * (s.x - this.touchAimCrosshair.x), this.touchAimCrosshair.y += .3 * (s.y - this.touchAimCrosshair.y)) : (this.touchAimCrosshair.x = this.player.bodyX, this.touchAimCrosshair.y = this.player.bodyY)
+                    this.touchAimCrosshair.visible ? (this.touchAimCrosshair.x += .5 * (s.x - this.touchAimCrosshair.x), this.touchAimCrosshair.y += .5 * (s.y - this.touchAimCrosshair.y)) : (this.touchAimCrosshair.x = this.player.bodyX, this.touchAimCrosshair.y = this.player.bodyY)
                 }
                 this.player.autoAim = !1, this.touchAimCrosshair.visible = !0
             } else this.player.autoAim = !0, this.touchAimCrosshair.visible = !1
@@ -23957,7 +23957,7 @@ function() {
     }, o.prototype.abandonClick = function() {
         this.state.start("MenuUpgrades")
     }, o.prototype.enemyKilled = function(t) {
-        this.enemiesAlive -= 1, this.points += 10000, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !1, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
+        this.enemiesAlive -= 1, this.points += t.points, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !0, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
     }, o.prototype.playerKilled = function() {
         this.touchAimCrosshair.visible = !1, h.cancelLaserLoop(), this.summaryAlert || (this.summaryAlert = new K(this.game, this.stage, !1, Math.round(this.profit), this.failContinue, this))
     }, o.prototype.successContinue = function() {
@@ -24041,6 +24041,6 @@ function() {
     }), document.addEventListener("click", function(t) {
         window.focus()
     }), window.unlockAllLevels = function() {
-        s.current.game.levels = 20, s.save(), "MenuLevels" === m.state.current && (m.state.restart(), m.focusGain())
+        s.current.game.levels = 15, s.save(), "MenuLevels" === m.state.current && (m.state.restart(), m.focusGain())
     }, window.AT.game = m
 }();
