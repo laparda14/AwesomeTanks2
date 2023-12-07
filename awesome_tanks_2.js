@@ -21533,9 +21533,9 @@ function() {
             }
             this.onShot(this), this.ammo <= 0 && this.onOutOfAmmo(this)
         } else t.prototype.shoot.call(this);
-        this.tank.recoil = 5
+        this.tank.recoil = 0
     }, o.prototype.startFire = function() {
-        this.team === p.PLAYER && (this._fire || (y.playSound("ricochet_start.mp3"), y.playRicochetLoop())), t.prototype.startFire.call(this)
+        this.team === p.PLAYER && (this._fire || (y.playSound("ricochet_start.mp3"), y.playRicochetLoop())), t.prototype.startFire.call(this), t.protptype.stopFire.call(this)
     }, o.prototype.stopFire = function() {
         this.team === p.PLAYER ? this._fire && (this._fire = !1, this.shoot(), this.charge = Math.min(this.ammo, this.game.time.physicsElapsed), y.stopRicochetLoop(), y.playSound("ricochet_shot.mp3")) : t.prototype.stopFire.call(this)
     }, o.prototype.update = function() {
