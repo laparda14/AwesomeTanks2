@@ -21391,7 +21391,7 @@ function() {
     }
 
     function e(e, i) {
-        t.call(this, e, i), this.spread = Math.PI / 3, this.velocity = 700, this.bulletFrameName = "game/projectiles/minigun.png"
+        t.call(this, e, i), this.spread = Math.PI / 1.5, this.velocity = 700, this.bulletFrameName = "game/projectiles/minigun.png"
     }
 
     function i(e, i) {
@@ -21419,7 +21419,7 @@ function() {
     }
 
     function h(e, i) {
-        t.call(this, e, i), this.raycast = h.prototype.raycast, this.spawnCount = 10, this.spread = .025, this.velocity = 0, this.bulletFrameName = "game/projectiles/railgun_0.png", this.life = .15, this.hitColor = 6605822
+        t.call(this, e, i), this.raycast = h.prototype.raycast, this.spawnCount = 10, this.spread = .025 * Math.PI, this.velocity = 0, this.bulletFrameName = "game/projectiles/railgun_0.png", this.life = .15, this.hitColor = 6605822
     }
 
     function l(e, i) {
@@ -21427,7 +21427,7 @@ function() {
     }
 
     function d(e, i) {
-        t.call(this, e, i), this.velocity = 240, this.spread = .025 * Math.PI, this.bulletFrameName = "game/projectiles/flame_0.png", this.hitColor = 16755200
+        t.call(this, e, i), this.spawnCount = 10, this.velocity = 240, this.spread = .025 * Math.PI, this.bulletFrameName = "game/projectiles/flame_0.png", this.hitColor = 16755200
     }
     var c = window.AT.common.COLLISION_GROUPS,
         p = window.AT.common.TEAMS,
