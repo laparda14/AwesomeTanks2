@@ -21399,19 +21399,19 @@ function() {
     }
 
     function o(e, i) {
-        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 480, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
+        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025, this.velocity = 480, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
     }
 
     function s(e, i) {
-        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 900, this.bulletFrameName = "game/projectiles/cannon.png"
+        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 900, this.bulletFrameName = "game/projectiles/cannon.png"
     }
 
     function n(e, i) {
-        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 60 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 0 / 0 : 0, this.radius = i.radius
+        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025, this.velocity = 60 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 0 / 0 : 0, this.radius = i.radius
     }
 
     function r(e, i) {
-        t.call(this, e, i), this.raycast = b(r.prototype.raycast, 1), this.spawnCount = 1, this.spread = 0, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Laser, this.hitColor = 16711680, this.soundAlertRadius && (this._alert = b(this._alert, 14)), this.add(this.createBullet())
+        t.call(this, e, i), this.raycast = b(r.prototype.raycast, 1), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Laser, this.hitColor = 16711680, this.soundAlertRadius && (this._alert = b(this._alert, 14)), this.add(this.createBullet())
     }
 
     function a(e, i) {
@@ -21419,7 +21419,7 @@ function() {
     }
 
     function h(e, i) {
-        t.call(this, e, i), this.raycast = h.prototype.raycast, this.spawnCount = 5, this.spread = 0.5, this.velocity = 0, this.bulletFrameName = "game/projectiles/railgun_0.png", this.life = .15, this.hitColor = 6605822
+        t.call(this, e, i), this.raycast = h.prototype.raycast, this.spawnCount = 10, this.spread = .025, this.velocity = 0, this.bulletFrameName = "game/projectiles/railgun_0.png", this.life = .15, this.hitColor = 6605822
     }
 
     function l(e, i) {
