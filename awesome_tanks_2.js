@@ -21395,11 +21395,11 @@ function() {
     }
 
     function i(e, i) {
-        t.call(this, e, i), this.spread = Math.PI / 5, this.velocity = 0, this.bulletFrameName = "game/projectiles/shotgun.png"
+        t.call(this, e, i), this.spread = Math.PI / 5, this.velocity = 500, this.bulletFrameName = "game/projectiles/shotgun.png"
     }
 
     function o(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 480, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
+        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 500, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
     }
 
     function s(e, i) {
@@ -21458,7 +21458,7 @@ function() {
     }, t.prototype.onBulletHitWall = function(t, e, i, o, s, n) {
         if (s && t.sprite.alive) {
             var r = this.game.state.getCurrentState();
-            r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius), t.sprite.kill(), t.setZeroVelocity()
+            r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius), t.setZeroVelocity()
         }
     }, t.prototype.onBulletHitObject = function(t, e, i, o, s, n) {
         e !== this.tank.body && (t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s), this.onBulletHitWall(t, e, i, o, s, n))
