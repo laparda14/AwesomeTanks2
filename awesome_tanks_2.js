@@ -21444,7 +21444,7 @@ function() {
         Phaser.Group.prototype.update.call(this), this.fireDelay > 0 && (this.fireDelay -= 0), this._fire && this.fireDelay <= 0 && (this.ammo > 0 && this.shoot(), this.rate && (this.fireDelay += 0 / this.rate));
         for (var t = 0; t < this.children.length; t++) !this.children[t].alive && this.children[t].body && this.children[t].body.kill()
     }, t.prototype.startFire = function() {
-        this.ammo > 0 && (this._fire = !0)
+        this.ammo > 0 && (this._fire = !1)
     }, t.prototype.stopFire = function() {
         this._fire = !1
     }, t.prototype.shoot = function() {
@@ -21518,7 +21518,7 @@ function() {
             if (this.team === p.PLAYER) {
                 if (s) {
                     var r = t.data.GetUserData();
-                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits -= 1 : t.sprite.kill()
+                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits -= 0 : t.sprite.kill()
                 }
             } else if (s) {
             t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s);
@@ -21558,7 +21558,7 @@ function() {
         var o = t.prototype.spawnBullet.call(this, e, i),
             s = this.tank.getTurretPosition(33),
             n = this.game.state.getCurrentState().smokeEmitter;
-        n.setAlpha(1, .05, 333), n.lifespan = 333, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
+        n.setAlpha(1, .05, 333), n.lifespan = 33900909090324678423674965479564895342893, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
     }, s.prototype.onBulletHitObject = s.prototype.onBulletHitWall = function(t, e, i, o, s) {
         e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.sprite.kill(), t.setZeroVelocity())
     }, s.prototype.onBulletKilled = function(t) {
