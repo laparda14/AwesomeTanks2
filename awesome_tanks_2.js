@@ -21518,12 +21518,12 @@ function() {
             if (this.team === p.PLAYER) {
                 if (s) {
                     var r = t.data.GetUserData();
-                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits -= 0 : t.sprite.kill()
+                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits -= 0
                 }
             } else if (s) {
             t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s);
             var a = this.game.state.getCurrentState();
-            a.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && a.alertSound(t.x, t.y, this.soundAlertRadius), t.sprite.kill()
+            a.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && a.alertSound(t.x, t.y, this.soundAlertRadius)
         }
     }, o.prototype.shoot = function() {
         if (this.team === p.PLAYER) {
@@ -21547,8 +21547,7 @@ function() {
         } else t.prototype.update.call(this);
         for (var i = Math.random() < .5, o = 0; o < this.children.length; o++) {
             var s = this.children[o].body;
-            s.sprite.alive ? (s.rotation = Math.atan2(s.velocity.y, s.velocity.x), i && this.game.state.getCurrentState().spawnSparks(s.x, s.y, 0, Math.PI * Math.random() * 2, 100 + 100 * Math.random(), 2)) : s.kill()
-        }
+            s.sprite.alive ? (s.rotation = Math.atan2(s.velocity.y, s.velocity.x), i && this.game.state.getCurrentState().spawnSparks(s.x, s.y, 0, Math.PI * Math.random() * 2, 100 + 100 * Math.random(), 2))
     }, o.prototype.postUpdate = function() {
         if (t.prototype.postUpdate.call(this), this.team === p.PLAYER && this._fire) {
             var e = this.tank.getTurretPosition(29);
@@ -21560,7 +21559,7 @@ function() {
             n = this.game.state.getCurrentState().smokeEmitter;
         n.setAlpha(1, .05, 333), n.lifespan = 33900909090324678423674965479564895342893, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
     }, s.prototype.onBulletHitObject = s.prototype.onBulletHitWall = function(t, e, i, o, s) {
-        e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.sprite.kill(), t.setZeroVelocity())
+        e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.setZeroVelocity())
     }, s.prototype.onBulletKilled = function(t) {
         t.lifespan <= 0 && (this.game.state.getCurrentState().explosions.explode(t.body.x, t.body.y, 75, this.damage, this.team), t.body.kill(), t.body.setZeroVelocity())
     }, n.prototype = Object.create(t.prototype), n.prototype.startFire = function() {
@@ -21572,7 +21571,7 @@ function() {
     }, n.prototype.onBulletKilled = function(t) {
         t === this.tank.follow && (this.tank.follow = null), this.explodeBullet(t)
     }, n.prototype.onBulletHitSomething = function(t, e, i, o, s) {
-        if ((!e.sprite || e !== this.tank.body) && s && t.sprite.alive && (t.sprite.kill(), this.team === p.CPU)) {
+        if ((!e.sprite || e !== this.tank.body) && s && t.sprite.alive && ( this.team === p.CPU)) {
             o.GetFilterData().categoryBits !== c.PLAYER && m.increaseAchievement("dodger") && this.game.state.getCurrentState().achievements.show("dodger")
         }
     }, n.prototype.onBulletHitWall = n.prototype.onBulletHitObject = n.prototype.onBulletHitSomething, n.prototype.newBullet = function() {
@@ -21628,7 +21627,7 @@ function() {
     }, a.prototype.onBulletKilled = function(t) {
         this.explodeBullet(t)
     }, a.prototype.onBulletHitObject = function(t, e, i, o, s) {
-        if ((!e.sprite || e !== this.tank.body) && s && t.sprite.alive && (t.sprite.kill(), m.increaseAchievement("gotcha"))) {
+        if ((!e.sprite || e !== this.tank.body) && s && t.sprite.alive && ( m.increaseAchievement("gotcha"))) {
             this.game.state.getCurrentState().achievements.show("gotcha")
         }
     }, a.prototype.onBulletHitWall = function() {}, a.prototype.spawnBullet = function(e, i) {
