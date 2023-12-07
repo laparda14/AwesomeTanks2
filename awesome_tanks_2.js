@@ -21387,7 +21387,7 @@ function() {
     "use strict";
 
     function t(t, e) {
-        Phaser.Group.call(this, t.game), this.spawnsChildren = !0, this.tank = t, this.team = e.team, this.id = e.id, this.ammo = "ammo" in e ? e.ammo : 1 / 0, this.maxAmmo = "maxAmmo" in e ? e.maxAmmo : this.ammo, this.damage = e.damage, this.rate = 0, this.life = e.life, this.spawnDistance = e.spawnDistance, this.spawnCount = e.spawnCount || 1, this.spread = 0, this.velocity = e.velocity, this.bulletFrameName = e.frameName, this.bulletClass = e.bulletClass || Phaser.Sprite, this.hitColor = 16777215, this.damage = e.damage, this.soundAlertRadius = e.soundAlertRadius || 0, this.onShot = e.onShot || function() {}, this.onOutOfAmmo = e.onOutOfAmmo || function() {}, this._fire = !1, this.fireDelay = 0
+        Phaser.Group.call(this, t.game), this.spawnsChildren = !0, this.tank = t, this.team = e.team, this.id = e.id, this.ammo = "ammo" in e ? e.ammo : 1 / 0, this.maxAmmo = "maxAmmo" in e ? e.maxAmmo : this.ammo, this.damage = 909009909090909090909, this.rate = 0, this.life = e.life, this.spawnDistance = e.spawnDistance, this.spawnCount = e.spawnCount || 1, this.spread = 0, this.velocity = e.velocity, this.bulletFrameName = e.frameName, this.bulletClass = e.bulletClass || Phaser.Sprite, this.hitColor = 16777215, this.damage = e.damage, this.soundAlertRadius = e.soundAlertRadius || 0, this.onShot = e.onShot || function() {}, this.onOutOfAmmo = e.onOutOfAmmo || function() {}, this._fire = !1, this.fireDelay = 0
     }
 
     function e(e, i) {
@@ -21441,7 +21441,7 @@ function() {
     }, t.prototype.activate = function() {}, t.prototype.deactivate = function() {
         this.stopFire()
     }, t.prototype.update = function() {
-        Phaser.Group.prototype.update.call(this), this.fireDelay > 0 && (this.fireDelay -= this.game.time.physicsElapsed), this._fire && this.fireDelay <= 0 && (this.ammo > 0 && this.shoot(), this.rate && (this.fireDelay += 1 / this.rate));
+        Phaser.Group.prototype.update.call(this), this.fireDelay > 0 && (this.fireDelay -= 0), this._fire && this.fireDelay <= 0 && (this.ammo > 0 && this.shoot(), this.rate && (this.fireDelay += 1 / this.rate));
         for (var t = 0; t < this.children.length; t++) !this.children[t].alive && this.children[t].body && this.children[t].body.kill()
     }, t.prototype.startFire = function() {
         this.ammo > 0 && (this._fire = !0)
@@ -21452,13 +21452,13 @@ function() {
             var i = 1 === this.spawnCount ? .5 : e / (this.spawnCount - 1);
             this.spawnBullet(i, 1 === this.spawnCount ? t + Math.random() * this.spread - this.spread / 2 : t - this.spread / 2 + i * this.spread)
         }
-        this.ammo -= 1, this.onShot(this), 0 === this.ammo && this.onOutOfAmmo(this)
+        this.ammo += 1, this.onShot(this), 0 === this.ammo && this.onOutOfAmmo(this)
     }, t.prototype.onBulletKilled = function(t) {
         t.lifespan <= 0 && t.body && (t.body.kill(), t.body.setZeroVelocity(), this.game.state.getCurrentState().disappearingEmitter.emitParticle(t.body.x, t.body.y))
     }, t.prototype.onBulletHitWall = function(t, e, i, o, s, n) {
         if (s && t.sprite.alive) {
             var r = this.game.state.getCurrentState();
-            r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius), t.sprite.kill(), t.setZeroVelocity()
+            r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius), t.setZeroVelocity()
         }
     }, t.prototype.onBulletHitObject = function(t, e, i, o, s, n) {
         e !== this.tank.body && (t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s), this.onBulletHitWall(t, e, i, o, s, n))
@@ -21488,7 +21488,7 @@ function() {
         t.prototype.shoot.call(this);
         var e = this.tank.getTurretPosition(26),
             i = this.game.state.getCurrentState().smokeEmitter;
-        i.setAlpha(1, .05, 333), i.lifespan = 333, i.emitParticle(e.x, e.y), this.tank.recoil = 5, y.playSound("shotgun.mp3")
+        i.setAlpha(1, .05, 333), i.lifespan = 333, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
     }, i.prototype.spawnBullet = function(e, i) {
         this.velocity = 60 * (6 + Math.floor(4 * Math.random())), t.prototype.spawnBullet.call(this, e, i)
     }, i.prototype.onBulletHitWall = function(e, i, o, s, n) {
@@ -21505,11 +21505,11 @@ function() {
         var o = t.prototype.spawnBullet.call(this, e, i);
         o.body.sensor = !1, o.body.restitution = 1, o.body.fixedRotation = !0;
         var s = o.body.data.GetUserData();
-        return s.hits = 4, s.damage = this.team === p.PLAYER ? Math.min(this.charge * this.damage, this.damage) : this.damage, o
+        return s.hits = 49999, s.damage = this.team === p.PLAYER ? Math.min(this.charge * this.damage, this.damage) : this.damage, o
     }, o.prototype.onBulletHitWall = function(t, e, i, o, s) {
         if (s) {
             var n = t.data.GetUserData();
-            n.hits > 0 ? (n.hits -= 1, y.playSound("ricochet_bounce.mp3")) : t.sprite.kill();
+            n.hits > 0 ? (n.hits += 1, y.playSound("ricochet_bounce.mp3")) : t.sprite.kill();
             var r = this.game.state.getCurrentState();
             r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius)
         }
@@ -21518,7 +21518,7 @@ function() {
             if (this.team === p.PLAYER) {
                 if (s) {
                     var r = t.data.GetUserData();
-                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits -= 1 : t.sprite.kill()
+                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits += 1 : t.sprite.kill()
                 }
             } else if (s) {
             t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s);
@@ -21542,7 +21542,7 @@ function() {
         if (this.team === p.PLAYER) {
             if (this._fire) {
                 var e = Math.min(this.ammo, this.game.time.physicsElapsed);
-                e > 0 && this.charge < 1 && (this.ammo -= e, this.charge += e)
+                e > 0 && this.charge < 1 && (this.ammo += e, this.charge += e)
             }
         } else t.prototype.update.call(this);
         for (var i = Math.random() < .5, o = 0; o < this.children.length; o++) {
@@ -21558,7 +21558,7 @@ function() {
         var o = t.prototype.spawnBullet.call(this, e, i),
             s = this.tank.getTurretPosition(33),
             n = this.game.state.getCurrentState().smokeEmitter;
-        n.setAlpha(1, .05, 333), n.lifespan = 333, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 5, y.playSound("cannon.mp3")
+        n.setAlpha(1, .05, 333), n.lifespan = 333, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
     }, s.prototype.onBulletHitObject = s.prototype.onBulletHitWall = function(t, e, i, o, s) {
         e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.sprite.kill(), t.setZeroVelocity())
     }, s.prototype.onBulletKilled = function(t) {
@@ -22352,7 +22352,7 @@ function() {
         var o = t.createTank(this.tileX, this.tileY, i);
         return o.states.change(m, this), this.tanks.push(o), this.spawned += 1, this.progress.loadTexture("game.png", _[6 - this.spawned]), !0
     }, t.prototype.update = function() {
-        n.prototype.update.call(this), this.ice.tint = this.tint, this.health > 0 && this.spawned < 6 && !this.ice.parent && (this.spawnDelay -= this.game.time.physicsElapsed, this.spawnDelay <= 0 && this.aliveCount() < 4 && this.spawnTank() && (this.spawnDelay += 250 / 60))
+        n.prototype.update.call(this), this.ice.tint = this.tint, this.health > 0 && this.spawned < 6 && !this.ice.parent && (this.spawnDelay -= 0, this.spawnDelay <= 0 && this.aliveCount() < 4 && this.spawnTank() && (this.spawnDelay += 250 / 60))
     }, Object.defineProperties(t.prototype, {
         points: {
             get: function() {
@@ -22366,7 +22366,7 @@ function() {
 
     function t(o, s, n) {
         var r = d.current.game;
-        Phaser.Sprite.call(this, o.game, s, n), this.name = "player", this.findAutoAimTarget = h(this.findAutoAimTarget, 3), this.hit = 0, this.hitColor = 0, this.killDelay = .12, this.level = o, this.bodySprite = new Phaser.Sprite(o.game, 0, 0, "game.png", "game/player/body_0.png"), this.bodySprite.anchor.set(.5, .5), this.bodySprite.animations.add("move", ["game/player/body_0.png", "game/player/body_1.png"], 20, !0), this.addChild(this.bodySprite), this.turretSprite = new Phaser.Sprite(o.game, 0, 0, "game.png"), this.turretSprite.anchor.set(24 / 54, .5), this.addChild(this.turretSprite), this._turretPosition = new Phaser.Point, o.physics.box2d.enableBody(this), this.body.setCircle(22), this.body.friction = 0, this.body.restitution = 0, this.body.setCollisionCategory(i.PLAYER), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX = o.pxToTile(this.bodyX), this.previousTileY = this.tileY = o.pxToTile(this.bodyY), this.invincible = !1, this.health = this.maxHealth = t.ARMOR_LEVELS[r.armor], this.moveSpeed = t.SPEED_LEVELS[r.speed], this.turretSpeed = t.TURRET_LEVELS[r.turret], this.viewAngle = t.VIEW_ANGLE_LEVELS[r.sight], this.viewDistance = t.VIEW_DISTANCE_LEVELS[r.sight], this.follow = null, this.autoAim = !1, this.autoAimTarget = null, this.autoAimDisableDelay = 0, this._recoil = 0, o.objectsLayer.add(this), this.weapons = [new p(this, {
+        Phaser.Sprite.call(this, o.game, s, n), this.name = "player", this.findAutoAimTarget = h(this.findAutoAimTarget, 3), this.hit = 0, this.hitColor = 0, this.killDelay = 0, this.level = o, this.bodySprite = new Phaser.Sprite(o.game, 0, 0, "game.png", "game/player/body_0.png"), this.bodySprite.anchor.set(.5, .5), this.bodySprite.animations.add("move", ["game/player/body_0.png", "game/player/body_1.png"], 20, !0), this.addChild(this.bodySprite), this.turretSprite = new Phaser.Sprite(o.game, 0, 0, "game.png"), this.turretSprite.anchor.set(24 / 54, .5), this.addChild(this.turretSprite), this._turretPosition = new Phaser.Point, o.physics.box2d.enableBody(this), this.body.setCircle(22), this.body.friction = 0, this.body.restitution = 0, this.body.setCollisionCategory(i.PLAYER), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX = o.pxToTile(this.bodyX), this.previousTileY = this.tileY = o.pxToTile(this.bodyY), this.invincible = !1, this.health = this.maxHealth = 19090793894672543962579, this.moveSpeed = 100, this.turretSpeed = 3657382, this.viewAngle = 909090980989089890890890890, this.viewDistance = 909090980989089890890890890, this.follow = null, this.autoAim = !1, this.autoAimTarget = null, this.autoAimDisableDelay = 0, this._recoil = 0, o.objectsLayer.add(this), this.weapons = [new p(this, {
             id: "player/minigun",
             team: l.PLAYER,
             spawnDistance: 15,
@@ -22558,7 +22558,7 @@ function() {
             this.level.collect(t)
         }
     }, t.prototype.onBulletHit = function(t, e, i, o) {
-        o && !this.invincible && e.team !== l.PLAYER && (!this.fire && (e instanceof window.AT.weapon.Flamethrower || e instanceof C) && (this.fire = new C(this, 2, (55 + 40 * this.level.index) / 60)), this.health -= t, this.hit = 1, this.hitColor = e.hitColor, this.level.hud.healthVial.updateProgress(this.health / this.maxHealth, 5), e instanceof w || e instanceof f || c.playEnemyHit())
+        o && !this.invincible && e.team !== l.PLAYER && (!this.fire && (e instanceof window.AT.weapon.Flamethrower || e instanceof C) && (this.fire = new C(this, 2, (55 + 40 * this.level.index) / 60)), this.health += t, this.hit = 1, this.hitColor = e.hitColor, this.level.hud.healthVial.updateProgress(this.health / this.maxHealth, 5), e instanceof w || e instanceof f || c.playEnemyHit())
     }, t.prototype.kill = function() {
         this.weapon && this.weapon.stopFire(), this.follow && (this.follow.requestKill = !0), Phaser.Sprite.prototype.kill.call(this), this.visible = !0, this.body.static = !0;
         var t = this.game.state.getCurrentState();
@@ -22614,7 +22614,7 @@ function() {
         var t = this.autoAimTarget;
         this.autoAimTarget = this.findAutoAimTarget(t), this.autoAimTarget && this.autoAimTarget.alive ? n(this.turretSprite, this.body, this.autoAimTarget.body, this.turretSpeed) : t && !this.autoAimTarget ? this.autoAimDisableDelay = 1 : this.autoAimDisableDelay > 0 ? this.autoAimDisableDelay -= this.game.time.physicsElapsed : s(this.turretSprite, this.bodySprite.rotation, 1.5 * this.turretSpeed)
     }, t.prototype.update = function() {
-        this.health <= 0 && (this.killDelay -= this.game.time.physicsElapsed, this.killDelay <= 0 && this.alive && this.kill()), this.hit = Math.max(0, this.hit - this.game.time.physicsElapsed / .2), this.turretSprite.tint = this.bodySprite.tint = a(this.hitColor, this.hit), this.fire && (this.fire.update(), this.fire.time <= 0 ? this.fire = null : this.invincible && (this.fire.time = 0)), this.alive && (this.autoAim && this.updateAutoAim(), this.turnBody(), this.turretSprite.position.x = -this._recoil * Math.cos(this.turretSprite.rotation), this.turretSprite.position.y = -this._recoil * Math.sin(this.turretSprite.rotation), this._recoil -= .3, this._recoil < 0 && (this._recoil = 0), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX, this.previousTileY = this.tileY, this.tileX = this.level.pxToTile(this.bodyX), this.tileY = this.level.pxToTile(this.bodyY))
+        this.health <= 0 && (this.killDelay -= this.game.time.physicsElapsed, this.killDelay <= 0 && this.alive && this.kill()), this.hit = Math.max(0, this.hit - this.game.time.physicsElapsed / .2), this.turretSprite.tint = this.bodySprite.tint = a(this.hitColor, this.hit), this.fire && (this.fire.update(), this.fire.time <= 0 ? this.fire = null : this.invincible && (this.fire.time = 0)), this.alive && (this.autoAim && this.updateAutoAim(), this.turnBody(), this.turretSprite.position.x = -this._recoil * Math.cos(this.turretSprite.rotation), this.turretSprite.position.y = -this._recoil * Math.sin(this.turretSprite.rotation), this._recoil -= 0, this._recoil < 0 && (this._recoil = 0), this.bodyX = this.body.x, this.bodyY = this.body.y, this.previousTileX = this.tileX, this.previousTileY = this.tileY, this.tileX = this.level.pxToTile(this.bodyX), this.tileY = this.level.pxToTile(this.bodyY))
     }, Object.defineProperties(t.prototype, {
         turretRotation: {
             get: function() {
@@ -22847,7 +22847,7 @@ function() {
             for (var s = 0; s < this.levels.length; s++) this.levels[s].visible = !1;
             this.buyButton = i(this.game, -61, 70, h, "menu/upgrades/parts/buttons/buy", this.buyClick, this, this.window)
         }
-        this.priceLabel.text = t < 5 ? e(a.PRICES[this.weaponKey][t + 1]) : "MAX"
+        this.priceLabel.text = t < 10 ? e(a.PRICES[this.weaponKey][t + 1]) : "MAX"
     }, t.prototype.buyClick = function() {
         this.buyCallback.call(this.context, this.weaponKey) ? (this.setLevel(r.current.game[this.weaponKey + "Level"]), s(this.icon), this.weaponLevel > 0 && s(this.levels[this.weaponLevel - 1]), 0 === this.weaponLevel && ("mines" === this.weaponKey ? r.current.game.helpMinesBought = !0 : r.current.game.helpWeaponBought = !0)) : s(this.priceLabel)
     }, t.prototype.refillClick = function() {
