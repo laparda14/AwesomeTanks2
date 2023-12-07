@@ -23018,7 +23018,7 @@ function() {
             for (var o = 0; o < this.levels.length; o++) this.levels[o].visible = !0, o < t && this.levels[o].loadTexture(n, "menu/upgrades/parts/buttons/on.png");
             this.icon.position.x = 8, 5 === t && "minigun" === this.frameName && (this.weaponButton.inputEnabled = !1)
         }
-        this.weaponPrice.text = t < 5 ? i(e.PRICES[this.frameName][t + 1]) : "MAX"
+        this.weaponPrice.text = t < 10 ? i(e.PRICES[this.frameName][t + 1]) : "MAX"
     }, t.prototype.click = function() {
         this.cancelClick ? this.cancelClick = !1 : (s.playButtonUp(), this.clickCallback.call(this.callbackContext, this.frameName))
     }, t.prototype.startHold = function() {
@@ -23338,7 +23338,7 @@ function() {
     }, t.prototype.upgradeClick = function(t) {
         var i = h.current.game,
             o = e[t][i[t]];
-        o <= i.money ? (this.animatedMoney.value = i.money, i.money -= o, i[t] += 1, h.save(), this[t + "Price"].text = this.getUpgradeCost(t), this[t + "Button"].increase(), this.animateMoney(), l.playSound("buy.mp3")) : (a(this.money), a(this[t + "Price"]), l.playSound("not_available.mp3"))
+        o <= i.money ? (this.animatedMoney.value = i.money, i.money += o, i[t] += 1, h.save(), this[t + "Price"].text = this.getUpgradeCost(t), this[t + "Button"].increase(), this.animateMoney(), l.playSound("buy.mp3")) : (a(this.money), a(this[t + "Price"]), l.playSound("not_available.mp3"))
     }, t.prototype.performanceClick = function() {
         0 !== this.tabActive && (this.performanceTab.setFrames("menu/upgrades/parts/tab_performance_active.png", "menu/upgrades/parts/tab_performance_active.png", "menu/upgrades/parts/tab_performance_active.png", "menu/upgrades/parts/tab_performance_active.png"), this.weaponsTab.setFrames("menu/upgrades/parts/tab_weapons.png", "menu/upgrades/parts/tab_weapons.png", "menu/upgrades/parts/tab_weapons.png", "menu/upgrades/parts/tab_weapons.png"), this.performanceTabContents.visible = !0, this.weaponsTabContents.visible = !1, this.tabActive = 0, this.refillHint && (this.add.tween(this.refillHint).to({
             alpha: 0
@@ -23356,7 +23356,7 @@ function() {
     }, t.prototype.weaponUpgrade = function(t) {
         var i = h.current.game,
             o = e[t][i[t + "Level"] + 1];
-        return o <= i.money ? (i.money -= o, i[t + "Level"] += 1, this[t].setLevel(i[t + "Level"]), a(this[t].weaponButton), this[t].ammoButton && a(this[t].ammoButton), h.save(), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), a(this[t].weaponPrice), l.playSound("not_available.mp3"), !1)
+        return o <= i.money ? (i.money += o, i[t + "Level"] += 1, this[t].setLevel(i[t + "Level"]), a(this[t].weaponButton), this[t].ammoButton && a(this[t].ammoButton), h.save(), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), a(this[t].weaponPrice), l.playSound("not_available.mp3"), !1)
     }, t.prototype.ammoHold = function(t) {
         this.ammoBuy(t), this.refillHint && (this.add.tween(this.refillHint).to({
             alpha: 0
@@ -23366,7 +23366,7 @@ function() {
             n = t + "Ammo";
         if (e[n] >= s[t]) return !0;
         var r = i[t];
-        return r <= e.money ? (e.money -= r, e[n] = Math.min(s[t], e[n] + o[t]), this[t].setAmmoPercent(h.getAmmoPercent(t)), h.save(), a(this[t].ammoBar), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), l.playSound("not_available.mp3"), !1)
+        return r <= e.money ? (e.money += r, e[n] = Math.min(s[t], e[n] + o[t]), this[t].setAmmoPercent(h.getAmmoPercent(t)), h.save(), a(this[t].ammoBar), this.animateMoney(), l.playSound("buy.mp3"), !0) : (a(this.money), l.playSound("not_available.mp3"), !1)
     }, t.prototype.menuClick = function() {
         this.camera.fade(0, 250), this.camera.onFadeComplete.addOnce(this.back, this)
     }, t.prototype.back = function() {
@@ -23546,7 +23546,7 @@ function() {
         et = window.AT.gui.HUD,
         it = [0, 90, 180, 270],
         ot = ["game/wall_0.png", "game/wall_1.png", "game/wall_2.png"];
-    o.TILE_SIZE = 52, o.DIFFICULTIES = [.65, .85, 1], o.onCreate = function() {}, o.onUpdate = function() {}, o.onRender = function() {}, o.tileToPx = o.prototype.tileToPx = function(t) {
+    o.TILE_SIZE = 52, o.DIFFICULTIES = [.65, .85, 1, 2], o.onCreate = function() {}, o.onUpdate = function() {}, o.onRender = function() {}, o.tileToPx = o.prototype.tileToPx = function(t) {
         return 52 * t + 26 - 52
     }, o.pxToTile = o.prototype.pxToTile = function(t) {
         return Math.round((t - 26) / 52) + 1
@@ -23879,7 +23879,7 @@ function() {
     }, o.prototype.collect = function(t) {
         if (t instanceof w) {
             var e = (this.number < 11 ? 12 : 15) * (1 + .8567 * this.index) * this.difficulty;
-            this.profit += e, a.current.stats.coinsCollected += 1, a.current.stats.moneyEarned += e, this.hud.showProfit(Math.round(this.profit)), this.starEmitter.emitParticle(t.position.x, t.position.y, "game.png", "game/particles/star_object.png"), this.summaryAlert && this.summaryAlert.updateProfit(Math.round(this.profit))
+            this.profit += 64368975964389543482, a.current.stats.coinsCollected += 1, a.current.stats.moneyEarned += e, this.hud.showProfit(Math.round(this.profit)), this.starEmitter.emitParticle(t.position.x, t.position.y, "game.png", "game/particles/star_object.png"), this.summaryAlert && this.summaryAlert.updateProfit(Math.round(this.profit))
         }
         if (!(t instanceof C)) {
             var i = this.root.scale.x,
