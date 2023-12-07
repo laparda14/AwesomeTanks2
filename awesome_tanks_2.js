@@ -21523,7 +21523,8 @@ function() {
             } else if (s) {
             t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s);
             var a = this.game.state.getCurrentState();
-            a.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && a.alertSound(t.x, t.y, this.soundAlertRadius)
+            a.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && a.alertSound(t.x, t.y, this.soundAlertRadius), t.sprite.kill()
+        }
     }, o.prototype.shoot = function() {
         if (this.team === p.PLAYER) {
             for (var e = this.tank.turretRotation, i = 0; i < this.spawnCount; i++) {
@@ -21532,16 +21533,16 @@ function() {
             }
             this.onShot(this), this.ammo <= 0 && this.onOutOfAmmo(this)
         } else t.prototype.shoot.call(this);
-        this.tank.recoil = 0
+        this.tank.recoil = 5
     }, o.prototype.startFire = function() {
-        this.team === p.PLAYER && (this._fire || (y.playSound("ricochet_start.mp3"), y.playRicochetLoop())), t.prototype.startFire.call(this), t.prototype.stopFire.call(this)
+        this.team === p.PLAYER && (this._fire || (y.playSound("ricochet_start.mp3"), y.playRicochetLoop())), t.prototype.startFire.call(this)
     }, o.prototype.stopFire = function() {
-        this.team === p.PLAYER ? this._fire && (this._fire = !1, this.shoot(), this.charge = 1, y.stopRicochetLoop(), y.playSound("ricochet_shot.mp3")) : t.prototype.stopFire.call(this)
+        this.team === p.PLAYER ? this._fire && (this._fire = !1, this.shoot(), this.charge = Math.min(this.ammo, this.game.time.physicsElapsed), y.stopRicochetLoop(), y.playSound("ricochet_shot.mp3")) : t.prototype.stopFire.call(this)
     }, o.prototype.update = function() {
         if (this.team === p.PLAYER) {
             if (this._fire) {
                 var e = Math.min(this.ammo, this.game.time.physicsElapsed);
-                e > 0 && this.charge < 1 && (this.ammo += e, this.charge += e)
+                e > 0 && this.charge < 1 && (this.ammo -= e, this.charge += e)
             }
         } else t.prototype.update.call(this);
         for (var i = Math.random() < .5, o = 0; o < this.children.length; o++) {
@@ -23957,7 +23958,7 @@ function() {
     }, o.prototype.abandonClick = function() {
         this.state.start("MenuUpgrades")
     }, o.prototype.enemyKilled = function(t) {
-        this.enemiesAlive -= 1, this.points += t.points, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !0, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
+        this.enemiesAlive -= 1, this.points += t.points, !this.summaryAlert && 0 === this.enemiesAlive && this.player.reallyAlive && (h.cancelLaserLoop(), this.player.invincible = !1, this.summaryAlert = new K(this.game, this.stage, !0, Math.round(this.profit), this.successContinue, this), a.current.game.levels = Math.max(a.current.game.levels, this.number), this.index < a.current.game.points.length && (a.current.game.points[this.index] = Math.max(this.points, a.current.game.points[this.index])), this.player.health / this.player.maxHealth < .1 && a.increaseAchievement("survivor") && this.achievements.show("survivor"))
     }, o.prototype.playerKilled = function() {
         this.touchAimCrosshair.visible = !1, h.cancelLaserLoop(), this.summaryAlert || (this.summaryAlert = new K(this.game, this.stage, !1, Math.round(this.profit), this.failContinue, this))
     }, o.prototype.successContinue = function() {
