@@ -21461,7 +21461,7 @@ function() {
             r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius), t.setZeroVelocity()
         }
     }, t.prototype.onBulletHitObject = function(t, e, i, o, s, n) {
-        e !== this.tank.body && (t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s), this.onBulletHitWall(t, e, i, o, s, n))
+        e !== this.tank.body && (t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s), t.sprite.kill(), this.onBulletHitWall(t, e, i, o, s, n))
     }, t.prototype.newBullet = function() {
         return new this.bulletClass(this.game, 0, 0, "game.png", this.bulletFrameName)
     }, t.prototype.createBullet = function() {
@@ -21481,7 +21481,7 @@ function() {
         return s.body.x = this.tank.body.x + i * this.spawnDistance, s.body.y = this.tank.body.y + o * this.spawnDistance, s.body.velocity.x = i * this.velocity, s.body.velocity.y = o * this.velocity, s.body.rotation = e, s.lifespan = 1e3 * this.life, s
     }, e.prototype = Object.create(t.prototype), e.prototype.spawnBullet = function(e, i) {
         var o = t.prototype.spawnBullet.call(this, e, i);
-        this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .15 * Math.PI, 250, 2), this.tank.recoil = 3, y.playSound("minigun.mp3", .8)
+        this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .15 * Math.PI, 250, 2), this.tank.recoil = 0, y.playSound("minigun.mp3", .8)
     }, e.prototype.onBulletHitWall = function(e, i, o, s, n) {
         n && e.sprite.alive && (this.game.state.getCurrentState().spawnSparks(e.x, e.y, 0, 2 * Math.PI, 100, 1), y.playSound("bullet_hit.mp3")), t.prototype.onBulletHitWall.call(this, e, i, o, s, n)
     }, i.prototype = Object.create(t.prototype), i.prototype.shoot = function() {
@@ -21617,7 +21617,7 @@ function() {
                 var r = i[0].body;
                 r.sprite && r.sprite.onBulletHit && r.sprite.onBulletHit(this.damage, this, null, !0), this.soundAlertRadius && this._alert(r.x, r.y)
             } else e.hide()
-        } else e.alive && e.kill()
+        } else e.alive
     }, a.prototype = Object.create(t.prototype), a.prototype.createBullet = function(e) {
         var e = t.prototype.createBullet.call(this);
         return e.body.setCircle(10), e.body.static = !0, e.body.sensor = !0, this.team === p.PLAYER && (e.body.setCollisionCategory(c.PROJECTILE), e.body.setCollisionMask(c.ENEMY), e.body.setCategoryContactCallback(c.ENEMY, this.onBulletHitObject, this)), e
