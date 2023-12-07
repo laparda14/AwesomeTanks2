@@ -21547,7 +21547,7 @@ function() {
         } else t.prototype.update.call(this);
         for (var i = Math.random() < .5, o = 0; o < this.children.length; o++) {
             var s = this.children[o].body;
-            s.sprite.alive ? (s.rotation = Math.atan2(s.velocity.y, s.velocity.x), i && this.game.state.getCurrentState().spawnSparks(s.x, s.y, 0, Math.PI * Math.random() * 2, 100 + 100 * Math.random(), 2))
+            s.sprite.alive ? (s.rotation = Math.atan2(s.velocity.y, s.velocity.x), i && this.game.state.getCurrentState().spawnSparks(s.x, s.y, 0, Math.PI * Math.random() * 2, 100 + 100 * Math.random(), 2)) : s.kill()
     }, o.prototype.postUpdate = function() {
         if (t.prototype.postUpdate.call(this), this.team === p.PLAYER && this._fire) {
             var e = this.tank.getTurretPosition(29);
