@@ -21391,7 +21391,7 @@ function() {
     }
 
     function e(e, i) {
-        t.call(this, e, i), this.spread = Math.PI / 5, this.velocity = 700, this.bulletFrameName = "game/projectiles/minigun.png"
+        t.call(this, e, i), this.spread = Math.PI / 20, this.velocity = 900, this.bulletFrameName = "game/projectiles/minigun.png"
     }
 
     function i(e, i) {
