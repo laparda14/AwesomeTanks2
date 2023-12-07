@@ -21391,7 +21391,7 @@ function() {
     }
 
     function e(e, i) {
-        t.call(this, e, i), this.velocity = 700, this.bulletFrameName = "game/projectiles/minigun.png"
+        t.call(this, e, i), this.spread = Math.PI / 3, this.velocity = 700, this.bulletFrameName = "game/projectiles/minigun.png"
     }
 
     function i(e, i) {
@@ -21399,7 +21399,7 @@ function() {
     }
 
     function o(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025, this.velocity = 480, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
+        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 480, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
     }
 
     function s(e, i) {
@@ -21407,7 +21407,7 @@ function() {
     }
 
     function n(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025, this.velocity = 60 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 0 / 0 : 0, this.radius = i.radius
+        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025 * Math.PI, this.velocity = 60 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 0 / 0 : 0, this.radius = i.radius
     }
 
     function r(e, i) {
@@ -21488,7 +21488,7 @@ function() {
         t.prototype.shoot.call(this);
         var e = this.tank.getTurretPosition(26),
             i = this.game.state.getCurrentState().smokeEmitter;
-        i.setAlpha(1, .05, 333), i.lifespan = 333, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
+        i.setAlpha(1, .05, 333), i.lifespan = 33333333333333333333333333333, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
     }, i.prototype.spawnBullet = function(e, i) {
         this.velocity = 60 * (6 + Math.floor(4 * Math.random())), t.prototype.spawnBullet.call(this, e, i)
     }, i.prototype.onBulletHitWall = function(e, i, o, s, n) {
