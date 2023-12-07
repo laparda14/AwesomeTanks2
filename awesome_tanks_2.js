@@ -21444,7 +21444,7 @@ function() {
         Phaser.Group.prototype.update.call(this), this.fireDelay > 0 && (this.fireDelay -= 0), this._fire && this.fireDelay <= 0 && (this.ammo > 0 && this.shoot(), this.rate && (this.fireDelay += 0 / this.rate));
         for (var t = 0; t < this.children.length; t++) !this.children[t].alive && this.children[t].body && this.children[t].body.kill()
     }, t.prototype.startFire = function() {
-        this.ammo > 0 && (this._fire = !1)
+        this.ammo > 0 && (this._fire = !0)
     }, t.prototype.stopFire = function() {
         this._fire = !1
     }, t.prototype.shoot = function() {
