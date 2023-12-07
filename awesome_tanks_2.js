@@ -21387,7 +21387,7 @@ function() {
     "use strict";
 
     function t(t, e) {
-        Phaser.Group.call(this, t.game), this.spawnsChildren = !0, this.tank = t, this.team = e.team, this.id = e.id, this.ammo = "ammo" in e ? e.ammo : 1 / 0, this.maxAmmo = "maxAmmo" in e ? e.maxAmmo : this.ammo, this.damage = 909009909090909090909, this.rate = 0, this.life = e.life, this.spawnDistance = e.spawnDistance, this.spawnCount = e.spawnCount || 1, this.spread = 0, this.velocity = e.velocity, this.bulletFrameName = e.frameName, this.bulletClass = e.bulletClass || Phaser.Sprite, this.hitColor = 16777215, this.damage = e.damage, this.soundAlertRadius = e.soundAlertRadius || 0, this.onShot = e.onShot || function() {}, this.onOutOfAmmo = e.onOutOfAmmo || function() {}, this._fire = !1, this.fireDelay = 0
+        Phaser.Group.call(this, t.game), this.spawnsChildren = !0, this.tank = t, this.team = e.team, this.id = e.id, this.ammo = "ammo" in e ? e.ammo : 1 / 0, this.maxAmmo = "maxAmmo" in e ? e.maxAmmo : this.ammo, this.damage = e.damage, this.rate = 0, this.life = e.life, this.spawnDistance = e.spawnDistance, this.spawnCount = e.spawnCount || 1, this.spread = 0, this.velocity = e.velocity, this.bulletFrameName = e.frameName, this.bulletClass = e.bulletClass || Phaser.Sprite, this.hitColor = 16777215, this.damage = e.damage, this.soundAlertRadius = e.soundAlertRadius || 0, this.onShot = e.onShot || function() {}, this.onOutOfAmmo = e.onOutOfAmmo || function() {}, this._fire = !1, this.fireDelay = 0
     }
 
     function e(e, i) {
