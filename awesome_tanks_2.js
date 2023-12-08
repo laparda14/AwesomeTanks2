@@ -21523,7 +21523,7 @@ function() {
             } else if (s) {
             t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s);
             var a = this.game.state.getCurrentState();
-            a.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && a.alertSound(t.x, t.y, this.soundAlertRadius), t.sprite.kill()
+            a.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && a.alertSound(t.x, t.y, this.soundAlertRadius)
         }
     }, o.prototype.shoot = function() {
         if (this.team === p.PLAYER) {
@@ -21560,7 +21560,7 @@ function() {
             n = this.game.state.getCurrentState().smokeEmitter;
         n.setAlpha(1, .05, 333), n.lifespan = 333, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
     }, s.prototype.onBulletHitObject = s.prototype.onBulletHitWall = function(t, e, i, o, s) {
-        e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.sprite.kill(), t.setZeroVelocity())
+        e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.setZeroVelocity())
     }, s.prototype.onBulletKilled = function(t) {
         t.lifespan <= 0 && (this.game.state.getCurrentState().explosions.explode(t.body.x, t.body.y, 75, this.damage, this.team), t.body.kill(), t.body.setZeroVelocity())
     }, n.prototype = Object.create(t.prototype), n.prototype.startFire = function() {
