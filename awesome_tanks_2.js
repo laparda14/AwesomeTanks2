@@ -20018,15 +20018,15 @@ var EasyStar = function(t) {
             survivor: 1
         },
         AMMO_LIMITS: {
-            shotgun: 105,
-            ricochet: 50,
-            flamethrower: 236,
-            cannon: 105,
-            shock: 1500,
-            rockets: 45,
-            laser: 1500,
-            railgun: 105,
-            mines: 20
+            shotgun: 105909090990909009,
+            ricochet: 50099099009090909,
+            flamethrower: 236900909909090,
+            cannon: 10590090909009,
+            shock: 1500900900909090909,
+            rockets: 4509099090900,
+            laser: 150009909090909090,
+            railgun: 105909909909090,
+            mines: 29909990909090
         },
         PRICES: {
             speed: [500, 600, 700, 800, 900],
@@ -22352,7 +22352,7 @@ function() {
         var o = t.createTank(this.tileX, this.tileY, i);
         return o.states.change(m, this), this.tanks.push(o), this.spawned += 1, this.progress.loadTexture("game.png", _[6 - this.spawned]), !0
     }, t.prototype.update = function() {
-        n.prototype.update.call(this), this.ice.tint = this.tint, this.health > 0 && this.spawned < 6 && !this.ice.parent && (this.spawnDelay -= 0, this.spawnDelay <= 0 && this.aliveCount() < 4 && this.spawnTank() && (this.spawnDelay += 250 / 60))
+        n.prototype.update.call(this), this.ice.tint = this.tint, this.health > 0 && this.spawned < 6 && !this.ice.parent && (this.spawnDelay -= this.game.time.physicsElapsed, this.spawnDelay <= 0 && this.aliveCount() < 4 && this.spawnTank() && (this.spawnDelay += 250 / 60))
     }, Object.defineProperties(t.prototype, {
         points: {
             get: function() {
