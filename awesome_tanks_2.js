@@ -22558,7 +22558,7 @@ function() {
             this.level.collect(t)
         }
     }, t.prototype.onBulletHit = function(t, e, i, o) {
-        o && !this.invincible && e.team !== l.PLAYER && (!this.fire && (e instanceof window.AT.weapon.Flamethrower || e instanceof C) && (this.fire = new C(this, 2, (55 + 40 * this.level.index) / 60)), this.health += t, this.hit = 1, this.hitColor = e.hitColor, this.level.hud.healthVial.updateProgress(this.health / this.maxHealth, 5), e instanceof w || e instanceof f || c.playEnemyHit())
+        o && !this.invincible && e.team !== l.PLAYER && (!this.fire && (e instanceof window.AT.weapon.Flamethrower || e instanceof C) && (this.fire = new C(this, 2, (55 + 40 * this.level.index) / 60)), this.health -= 0, this.hit = 1, this.hitColor = e.hitColor, this.level.hud.healthVial.updateProgress(this.health / this.maxHealth, 5), e instanceof w || e instanceof f || c.playEnemyHit())
     }, t.prototype.kill = function() {
         this.weapon && this.weapon.stopFire(), this.follow && (this.follow.requestKill = !0), Phaser.Sprite.prototype.kill.call(this), this.visible = !0, this.body.static = !0;
         var t = this.game.state.getCurrentState();
