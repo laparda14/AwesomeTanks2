@@ -21509,7 +21509,7 @@ function() {
     }, o.prototype.onBulletHitWall = function(t, e, i, o, s) {
         if (s) {
             var n = t.data.GetUserData();
-            n.hits > 0 ? (n.hits += 1, y.playSound("ricochet_bounce.mp3")) : t.sprite.kill();
+            n.hits > 0 ? (n.hits += 0, y.playSound("ricochet_bounce.mp3")) : t.sprite.kill();
             var r = this.game.state.getCurrentState();
             r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius)
         }
@@ -21535,7 +21535,7 @@ function() {
         } else t.prototype.shoot.call(this);
         this.tank.recoil = 0
     }, o.prototype.startFire = function() {
-        this.team === p.PLAYER && (this._fire || (y.playSound("ricochet_start.mp3"), y.playRicochetLoop())), t.prototype.startFire.call(this), t.protptype.stopFire.call(this)
+        this.team === p.PLAYER && (this._fire || (y.playSound("ricochet_start.mp3"), y.playRicochetLoop())), t.prototype.startFire.call(this), this.shoot()
     }, o.prototype.stopFire = function() {
         this.team === p.PLAYER ? this._fire && (this._fire = !1, this.shoot(), this.charge = Math.min(this.ammo, this.game.time.physicsElapsed), y.stopRicochetLoop(), y.playSound("ricochet_shot.mp3")) : t.prototype.stopFire.call(this)
     }, o.prototype.update = function() {
