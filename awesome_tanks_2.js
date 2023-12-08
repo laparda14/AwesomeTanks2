@@ -1,4 +1,4 @@
-Math.sign || (Math.sign = function(t) {
+ Math.sign || (Math.sign = function(t) {
         return t = +t, 0 === t || isNaN(t) ? Number(t) : t > 0 ? 1 : -1
     }), String.prototype.repeat || (String.prototype.repeat = function(t) {
         "use strict";
@@ -21509,7 +21509,7 @@ function() {
     }, o.prototype.onBulletHitWall = function(t, e, i, o, s) {
         if (s) {
             var n = t.data.GetUserData();
-            n.hits > 0 ? (n.hits += 0, y.playSound("ricochet_bounce.mp3")) : t.sprite.kill();
+            n.hits > 0 ? (n.hits += 0, y.playSound("ricochet_bounce.mp3")) : t.prototype.spawnBullet.call(this, e, i);
             var r = this.game.state.getCurrentState();
             r.starEmitter.emitParticle(t.x, t.y, "game.png", "game/particles/star_object.png"), this.soundAlertRadius && r.alertSound(t.x, t.y, this.soundAlertRadius)
         }
@@ -21518,7 +21518,7 @@ function() {
             if (this.team === p.PLAYER) {
                 if (s) {
                     var r = t.data.GetUserData();
-                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits += 1 : t.sprite.kill()
+                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits += 1 
                 }
             } else if (s) {
             t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s);
@@ -21558,7 +21558,7 @@ function() {
         var o = t.prototype.spawnBullet.call(this, e, i),
             s = this.tank.getTurretPosition(33),
             n = this.game.state.getCurrentState().smokeEmitter;
-        n.setAlpha(1, .05, 333), n.lifespan = 333, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
+        n.setAlpha(1, .05, 333), n.lifespan = 0, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
     }, s.prototype.onBulletHitObject = s.prototype.onBulletHitWall = function(t, e, i, o, s) {
         e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.setZeroVelocity())
     }, s.prototype.onBulletKilled = function(t) {
@@ -21743,7 +21743,7 @@ function() {
     }, d.prototype.onBulletHitWall = function(t, e, i, o, s) {
         if (s && t.sprite.alive) {
             var n = this.game.state.getCurrentState();
-            n.spawnSmoke(t.x, t.y, 3), this.soundAlertRadius && n.alertSound(t.x, t.y, this.soundAlertRadius), t.sprite.kill(), t.setZeroVelocity()
+            n.spawnSmoke(t.x, t.y, 3), this.soundAlertRadius && n.alertSound(t.x, t.y, this.soundAlertRadius), t.setZeroVelocity()
         }
     }, d.prototype.update = function() {
         t.prototype.update.call(this);
