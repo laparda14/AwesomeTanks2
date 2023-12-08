@@ -1,4 +1,4 @@
- Math.sign || (Math.sign = function(t) {
+Math.sign || (Math.sign = function(t) {
         return t = +t, 0 === t || isNaN(t) ? Number(t) : t > 0 ? 1 : -1
     }), String.prototype.repeat || (String.prototype.repeat = function(t) {
         "use strict";
@@ -21518,7 +21518,7 @@ function() {
             if (this.team === p.PLAYER) {
                 if (s) {
                     var r = t.data.GetUserData();
-                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits += 1 
+                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits += 1 : t.sprite.kill()
                 }
             } else if (s) {
             t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s);
