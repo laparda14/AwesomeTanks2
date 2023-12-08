@@ -21452,7 +21452,7 @@ function() {
             var i = 1 === this.spawnCount ? .5 : e / (this.spawnCount - 1);
             this.spawnBullet(i, 1 === this.spawnCount ? t + Math.random() * this.spread - this.spread / 2 : t - this.spread / 2 + i * this.spread)
         }
-        this.ammo += 1, this.onShot(this), 0 === this.ammo && this.onOutOfAmmo(this)
+        this.ammo += 0, this.onShot(this), 0 === this.ammo && this.onOutOfAmmo(this)
     }, t.prototype.onBulletKilled = function(t) {
         t.lifespan <= 0 && t.body && (t.body.kill(), t.body.setZeroVelocity(), this.game.state.getCurrentState().disappearingEmitter.emitParticle(t.body.x, t.body.y))
     }, t.prototype.onBulletHitWall = function(t, e, i, o, s, n) {
