@@ -21481,14 +21481,14 @@ function() {
         return s.body.x = this.tank.body.x + i * this.spawnDistance, s.body.y = this.tank.body.y + o * this.spawnDistance, s.body.velocity.x = i * this.velocity, s.body.velocity.y = o * this.velocity, s.body.rotation = e, s.lifespan = 1e3 * this.life, s
     }, e.prototype = Object.create(t.prototype), e.prototype.spawnBullet = function(e, i) {
         var o = t.prototype.spawnBullet.call(this, e, i);
-        this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .15 * Math.PI, 250, 2), this.tank.recoil = 3, y.playSound("minigun.mp3", .8)
+        this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .15 * Math.PI, 250, 2), this.tank.recoil = 0, y.playSound("minigun.mp3", .8)
     }, e.prototype.onBulletHitWall = function(e, i, o, s, n) {
         n && e.sprite.alive && (this.game.state.getCurrentState().spawnSparks(e.x, e.y, 0, 2 * Math.PI, 100, 1), y.playSound("bullet_hit.mp3")), t.prototype.onBulletHitWall.call(this, e, i, o, s, n)
     }, i.prototype = Object.create(t.prototype), i.prototype.shoot = function() {
         t.prototype.shoot.call(this);
         var e = this.tank.getTurretPosition(26),
             i = this.game.state.getCurrentState().smokeEmitter;
-        i.setAlpha(1, .05, 333), i.lifespan = 333, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
+        i.setAlpha(1, .05, 333), i.lifespan = 30, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
     }, i.prototype.spawnBullet = function(e, i) {
         this.velocity = 60 * (6 + Math.floor(4 * Math.random())), t.prototype.spawnBullet.call(this, e, i)
     }, i.prototype.onBulletHitWall = function(e, i, o, s, n) {
@@ -21542,7 +21542,7 @@ function() {
         if (this.team === p.PLAYER) {
             if (this._fire) {
                 var e = Math.min(this.ammo, this.game.time.physicsElapsed);
-                e > 0 && this.charge < 1 && (this.ammo += e, this.charge += e)
+                e > 0 && this.charge < 1 && (this.ammo += e, this.charge += 1)
             }
         } else t.prototype.update.call(this);
         for (var i = Math.random() < .5, o = 0; o < this.children.length; o++) {
@@ -21662,7 +21662,7 @@ function() {
             var c = d.sparkEmitter;
             c.setXSpeed(-100, 100), c.setYSpeed(-100, 100);
             for (var t = 0; t < 10; t++) c.emitParticle(r.endX, r.endY, "game.png", "game/particles/spark_3.png");
-            this.team === p.PLAYER && h >= 3 && m.increaseAchievement("nailed") && d.achievements.show("nailed"), this.tank.recoil = 5, y.playSound("railgun.mp3"), this.onShot(this, a)
+            this.team === p.PLAYER && h >= 3 && m.increaseAchievement("nailed") && d.achievements.show("nailed"), this.tank.recoil = 0, y.playSound("railgun.mp3"), this.onShot(this, a)
         }
         return a
     }, h.prototype.raycast = function(t, e, i, o) {
