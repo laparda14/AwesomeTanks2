@@ -21488,13 +21488,13 @@ function() {
         t.prototype.shoot.call(this);
         var e = this.tank.getTurretPosition(26),
             i = this.game.state.getCurrentState().smokeEmitter;
-        i.setAlpha(1, .05, 333), i.lifespan = 30, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
+        i.setAlpha(1, .05, 333), i.lifespan = 0.01, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
     }, i.prototype.spawnBullet = function(e, i) {
         this.velocity = 60 * (6 + Math.floor(4 * Math.random())), t.prototype.spawnBullet.call(this, e, i)
     }, i.prototype.onBulletHitWall = function(e, i, o, s, n) {
         n && e.sprite.alive && (this.game.state.getCurrentState().spawnSparks(e.x, e.y, 0, 2 * Math.PI, 100, 1), y.playSound("bullet_hit.mp3")), t.prototype.onBulletHitWall.call(this, e, i, o, s, n)
     }, o.prototype = Object.create(t.prototype), o.prototype.skipCollision = function(t, e, i, o, s, n) {
-        s.SetEnabled(!1)
+        s.SetEnabled(!0)
     }, o.prototype.createBullet = function() {
         var e = t.prototype.createBullet.call(this);
         return this.team === p.PLAYER ? e.body.setCategoryPresolveCallback(c.ENEMY, this.skipCollision, this) : e.body.setCategoryPresolveCallback(c.PLAYER, this.skipCollision, this), e.body.data.SetUserData({
