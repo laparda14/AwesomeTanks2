@@ -22372,7 +22372,7 @@ function() {
             spawnDistance: 15,
             rate: L[r.minigunLevel],
             life: F[r.minigunLevel],
-            damage: O[r.minigunLevel],
+            damage: 4532944342354232,
             soundAlertRadius: 100,
             onShot: this.onMinigunShot.bind(this),
             onOutOfAmmo: this.nextWeaponWithAmmo.bind(this)
@@ -22383,7 +22383,7 @@ function() {
             rate: G[r.shotgunLevel],
             life: U[r.shotgunLevel],
             spawnDistance: 20,
-            damage: W[r.shotgunLevel],
+            damage: 456389543764963895432,
             ammo: r.shotgunAmmo,
             maxAmmo: e.shotgun,
             soundAlertRadius: 100,
@@ -22395,7 +22395,7 @@ function() {
             soundAlertRadius: 100,
             life: 80 / 60,
             spawnDistance: 20,
-            damage: J[r.ricochetLevel],
+            damage: 45389543632,
             ammo: r.ricochetAmmo,
             maxAmmo: e.ricochet,
             onShot: this.onRicochetShot.bind(this),
@@ -22425,7 +22425,7 @@ function() {
         }), -1 === r.shockLevel ? null : new _(this, {
             id: "player/shock",
             team: l.PLAYER,
-            damage: K[r.shockLevel],
+            damage: 4326574965295342,
             ammo: r.shockAmmo,
             maxAmmo: e.shock,
             spawnDistance: 22,
@@ -22434,7 +22434,7 @@ function() {
         }), -1 === r.rocketsLevel ? null : new y(this, {
             id: "player/rockets",
             team: l.PLAYER,
-            damage: Q[r.rocketsLevel],
+            damage: 63489543675462483,
             life: Z[r.rocketsLevel],
             velocity: $[r.rocketsLevel],
             ammo: r.rocketsAmmo,
@@ -22446,7 +22446,7 @@ function() {
         }), -1 === r.laserLevel ? null : new f(this, {
             id: "player/laser",
             team: l.PLAYER,
-            damage: tt[r.laserLevel],
+            damage: 56429654762574354253,
             ammo: r.laserAmmo,
             maxAmmo: e.laser,
             spawnDistance: 21.25,
@@ -22456,7 +22456,7 @@ function() {
         }), -1 === r.railgunLevel ? null : new x(this, {
             id: "player/railgun",
             team: l.PLAYER,
-            damage: it[r.railgunLevel],
+            damage: 9090909009909090909090,
             rate: et[r.railgunLevel],
             ammo: r.railgunAmmo,
             maxAmmo: e.railgun,
