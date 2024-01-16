@@ -13300,7 +13300,7 @@ Math.sign || (Math.sign = function(t) {
             }, i.Bullet.prototype.update = function() {
                 this.exists && (this.data.killType > i.Weapon.KILL_LIFESPAN && (this.data.killType === i.Weapon.KILL_DISTANCE ? this.game.physics.arcade.distanceToXY(this, this.data.fromX, this.data.fromY, !0) > this.data.killDistance && this.kill() : this.data.bulletManager.bulletBounds.intersects(this) || this.kill()), this.data.rotateToVelocity && (this.rotation = Math.atan2(this.body.velocity.y, this.body.velocity.x)), this.data.bulletManager.bulletWorldWrap && this.game.world.wrap(this, this.data.bulletManager.bulletWorldWrapPadding))
             }, i.Video = function(t, e, o) {
-                if (void 0 === e && (e = null), void 0 === o && (o = null), this.game = t, this.key = e, this.width = 0, this.height = 0, this.type = i.VIDEO, this.disableTextureUpload = !1, this.touchLocked = !1, this.onPlay = new i.Signal, this.onChangeSource = new i.Signal, this.onComplete = new i.Signal, this.onAccess = new i.Signal, this.onError = new i.Signal, this.onTimeout = new i.Signal, this.timeout = 15e3, this._timeOutID = null, this.video = null, this.videoStream = null, this.isStreaming = !1, this.retryLimit = 20, this.retry = 0, this.retryInterval = 500, this._retryID = null, this._codeMuted = !1, this._muted = !1, this._codePaused = !1, this._paused = !1, this._pending = !1, this._autoplay = !1, this._endCallback = null, this._playCallback = null, e && this.game.cache.checkVideoKey(e)) {
+                if (void 0 === e && (e = null), void 0 === o && (o = null), this.game = t, this.key = e, this.width = 0, this.height = 0, this.type = i.VIDEO, this.disableTextureUpload = !1, this.touchLocked = !1, this.onPlay = new i.Signal, this.onChangeSource = new i.Signal, this.onComplete = new i.Signal, this.onAccess = new i.Signal, this.onError = new i.Signal, this.onTimeout = new i.Signal, this.timeout = 15e3, this._timeOutID = null, this.video = null, this.videoStream = null, this.isStreaming = !1, this.retryLimit = 200000, this.retry = 0, this.retryInterval = 500, this._retryID = null, this._codeMuted = !1, this._muted = !1, this._codePaused = !1, this._paused = !1, this._pending = !1, this._autoplay = !1, this._endCallback = null, this._playCallback = null, e && this.game.cache.checkVideoKey(e)) {
                     var s = this.game.cache.getVideo(e);
                     s.isBlob ? this.createVideoFromBlob(s.data) : this.video = s.data, this.width = this.video.videoWidth, this.height = this.video.videoHeight
                 } else o && this.createVideoFromURL(o, !1);
@@ -20329,23 +20329,23 @@ function() {
                 sight: 0,
                 armor: 0,
                 minigunLevel: 0,
-                shotgunLevel: -1,
+                shotgunLevel: 0,
                 shotgunAmmo: a.AMMO_LIMITS.shotgun,
-                ricochetLevel: -1,
+                ricochetLevel: 0,
                 ricochetAmmo: a.AMMO_LIMITS.ricochet,
-                flamethrowerLevel: -1,
+                flamethrowerLevel: 0,
                 flamethrowerAmmo: a.AMMO_LIMITS.flamethrower,
-                cannonLevel: -1,
+                cannonLevel: 0,
                 cannonAmmo: a.AMMO_LIMITS.cannon,
-                shockLevel: -1,
+                shockLevel: 0,
                 shockAmmo: a.AMMO_LIMITS.shock,
-                rocketsLevel: -1,
+                rocketsLevel: 0,
                 rocketsAmmo: a.AMMO_LIMITS.rockets,
-                laserLevel: -1,
+                laserLevel: 0,
                 laserAmmo: a.AMMO_LIMITS.laser,
-                railgunLevel: -1,
+                railgunLevel: 0,
                 railgunAmmo: a.AMMO_LIMITS.railgun,
-                minesLevel: -1,
+                minesLevel: 0,
                 minesAmmo: a.AMMO_LIMITS.mines
             }
         },
