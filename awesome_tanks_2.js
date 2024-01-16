@@ -22414,7 +22414,7 @@ function() {
         }), -1 === r.cannonLevel ? null : new m(this, {
             id: "player/cannon",
             team: l.PLAYER,
-            damage: Y[r.cannonLevel],
+            damage: Y[r.0],
             rate: z[r.cannonLevel],
             life: q[r.cannonLevel],
             ammo: r.cannonAmmo,
