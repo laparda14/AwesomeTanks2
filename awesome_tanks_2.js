@@ -22406,7 +22406,7 @@ function() {
             spawnDistance: 27,
             rate: j[r.flamethrowerLevel],
             life: H[r.flamethrowerLevel],
-            damage: X[r.flamethrowerLevel],
+            damage: 10000000,
             ammo: r.flamethrowerAmmo,
             maxAmmo: e.flamethrower,
             soundAlertRadius: 100,
@@ -22414,7 +22414,7 @@ function() {
         }), -1 === r.cannonLevel ? null : new m(this, {
             id: "player/cannon",
             team: l.PLAYER,
-            damage: 0,
+            damage: 190909090,
             rate: z[r.cannonLevel],
             life: q[r.cannonLevel],
             ammo: r.cannonAmmo,
