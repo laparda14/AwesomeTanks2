@@ -21391,7 +21391,7 @@ function() {
     }
 
     function e(e, i) {
-        t.call(this, e, i), this.velocity = 10000, this.bulletFrameName = "game/projectiles/minigun.png"
+        t.call(this, e, i), this.velocity = 1000, this.bulletFrameName = "game/projectiles/minigun.png"
     }
 
     function i(e, i) {
@@ -21399,7 +21399,7 @@ function() {
     }
 
     function o(e, i) {
-        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 4000, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
+        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 2000, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
     }
 
     function s(e, i) {
