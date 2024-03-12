@@ -21488,7 +21488,7 @@ function() {
         t.prototype.shoot.call(this);
         var e = this.tank.getTurretPosition(26),
             i = this.game.state.getCurrentState().smokeEmitter;
-        i.setAlpha(1, .05, 333), i.lifespan = 0, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
+        i.setAlpha(1, .05, 333), i.lifespan = 1e99, i.emitParticle(e.x, e.y), this.tank.recoil = 0, y.playSound("shotgun.mp3")
     }, i.prototype.spawnBullet = function(e, i) {
         this.velocity = 60 * (6 + Math.floor(4 * Math.random())), t.prototype.spawnBullet.call(this, e, i)
     }, i.prototype.onBulletHitWall = function(e, i, o, s, n) {
@@ -21558,7 +21558,7 @@ function() {
         var o = t.prototype.spawnBullet.call(this, e, i),
             s = this.tank.getTurretPosition(33),
             n = this.game.state.getCurrentState().smokeEmitter;
-        n.setAlpha(1, .05, 333), n.lifespan = 0, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
+        n.setAlpha(1, .05, 333), n.lifespan = 1e99, n.emitParticle(s.x, s.y), this.game.state.getCurrentState().spawnSparks(o.body.x + 10 * Math.cos(i), o.body.y + 10 * Math.sin(i), i, .1 * Math.PI, 300, 3), this.tank.recoil = 0, y.playSound("cannon.mp3")
     }, s.prototype.onBulletHitObject = s.prototype.onBulletHitWall = function(t, e, i, o, s) {
         e !== this.tank.body && s && t.sprite.alive && (this.game.state.getCurrentState().explosions.explode(t.x, t.y, 75, this.damage, this.team), t.setZeroVelocity())
     }, s.prototype.onBulletKilled = function(t) {
@@ -21692,7 +21692,7 @@ function() {
         return new this.bulletClass(this.game, 0, 0)
     }, l.prototype.spawnBullet = function(t, e) {
         var i = this.getBullet();
-        return i.revive(), i.lifespan = 1e3 * this.life, this.onShot(this, i), i
+        return i.revive(), i.lifespan = 1e99 * this.life, this.onShot(this, i), i
     }, l.prototype.raycast = function(t, e, i, o) {
         return this.game.physics.box2d.raycast(t, e, i, o, !0, this.team === p.CPU ? r.collisionFilterCPU : r.collisionFilterPlayer)
     }, l.prototype.findClosestEnemy = function(t, e) {
