@@ -21399,7 +21399,7 @@ function() {
     }
 
     function o(e, i) {
-        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 10000, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
+        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 6500, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
     }
 
     function s(e, i) {
