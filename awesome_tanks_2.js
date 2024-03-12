@@ -21391,7 +21391,7 @@ function() {
     }
 
     function e(e, i) {
-        t.call(this, e, i), this.velocity = 690, this.bulletFrameName = "game/projectiles/minigun.png"
+        t.call(this, e, i), this.velocity = 0, this.bulletFrameName = "game/projectiles/minigun.png"
     }
 
     function i(e, i) {
@@ -21399,15 +21399,15 @@ function() {
     }
 
     function o(e, i) {
-        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 480, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
+        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 0, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
     }
 
     function s(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025, this.velocity = 900, this.bulletFrameName = "game/projectiles/cannon.png"
+        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025, this.velocity = 0, this.bulletFrameName = "game/projectiles/cannon.png"
     }
 
     function n(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025, this.velocity = 60 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 1 / 0 : 0, this.radius = i.radius
+        t.call(this, e, i), this.spawnCount = 10, this.spread = 0.025, this.velocity = 0 * (i.velocity || .5), this.bulletFrameName = null, this.bulletClass = f, this.smokeTime = 0, this.fireDelay = i.team === p.PLAYER ? 1 / 0 : 0, this.radius = i.radius
     }
 
     function r(e, i) {
@@ -21427,7 +21427,7 @@ function() {
     }
 
     function d(e, i) {
-        t.call(this, e, i), this.spawnCount = 10, this.velocity = 240, this.spread = .025 * Math.PI, this.bulletFrameName = "game/projectiles/flame_0.png", this.hitColor = 16755200
+        t.call(this, e, i), this.spawnCount = 10, this.velocity = 0, this.spread = .025 * Math.PI, this.bulletFrameName = "game/projectiles/flame_0.png", this.hitColor = 16755200
     }
     var c = window.AT.common.COLLISION_GROUPS,
         p = window.AT.common.TEAMS,
