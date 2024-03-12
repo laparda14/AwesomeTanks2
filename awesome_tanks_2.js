@@ -21391,7 +21391,7 @@ function() {
     }
 
     function e(e, i) {
-        t.call(this, e, i), this.velocity = 0, this.bulletFrameName = "game/projectiles/minigun.png"
+        t.call(this, e, i), this.velocity = 10, this.bulletFrameName = "game/projectiles/minigun.png"
     }
 
     function i(e, i) {
@@ -21399,7 +21399,7 @@ function() {
     }
 
     function o(e, i) {
-        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 0, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
+        t.call(this, e, i), this.spawnCount = 1, this.spread = 0, this.velocity = 1000, this.bulletFrameName = i.frameName || "game/projectiles/plasma.png", this.rate = this.team === p.PLAYER ? 0 : i.rate, this.charge = 0
     }
 
     function s(e, i) {
@@ -21411,7 +21411,7 @@ function() {
     }
 
     function r(e, i) {
-        t.call(this, e, i), this.raycast = b(r.prototype.raycast, 1), this.spawnCount = 1, this.spread = 0, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Laser, this.hitColor = 16711680, this.soundAlertRadius && (this._alert = b(this._alert, 14)), this.add(this.createBullet())
+        t.call(this, e, i), this.raycast = b(r.prototype.raycast, 1), this.spawnCount = 10, this.spread = 0.05, this.velocity = 0, this.bulletFrameName = null, this.rate = 0, this.life = 1 / 0, this.bulletClass = window.AT.Laser, this.hitColor = 16711680, this.soundAlertRadius && (this._alert = b(this._alert, 14)), this.add(this.createBullet())
     }
 
     function a(e, i) {
@@ -21518,7 +21518,7 @@ function() {
             if (this.team === p.PLAYER) {
                 if (s) {
                     var r = t.data.GetUserData();
-                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits += 1 : t.sprite.kill()
+                    e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(r.damage, this, t, s), r.hits > 0 ? r.hits += 0 : t.sprite.kill()
                 }
             } else if (s) {
             t.sprite.alive && e.sprite && e.sprite.onBulletHit && e.sprite.onBulletHit(this.damage, this, t, s);
